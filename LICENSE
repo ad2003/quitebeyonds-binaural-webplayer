@@ -1,0 +1,68 @@
+                    GNU GENERAL PUBLIC LICENSE
+                       Version 3, 29 June 2007
+
+ Copyright (C) 2024-2026 quitebeyond (https://github.com/quitebeyond)
+ 
+ Spatial Audio Web Player — Browser-based 3D spatial audio workstation
+ for binaural mixing, HRTF rendering, and immersive soundscape design.
+
+ This program is free software: you can redistribute it and/or modify
+ it under the terms of the GNU General Public License as published by
+ the Free Software Foundation, either version 3 of the License, or
+ (at your option) any later version.
+
+ This program is distributed in the hope that it will be useful,
+ but WITHOUT ANY WARRANTY; without even the implied warranty of
+ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ GNU General Public License for more details.
+
+ You should have received a copy of the GNU General Public License
+ along with this program. If not, see <https://www.gnu.org/licenses/>.
+
+ ─────────────────────────────────────────────────────────────────────
+
+ ADDITIONAL NOTICES:
+
+ 1. ATTRIBUTION REQUIREMENT
+    Any redistribution, modified or unmodified, must retain this
+    copyright notice, the author name "quitebeyond", and a link
+    to the original repository in all copies or substantial portions
+    of the software.
+
+ 2. TRADEMARK NOTICE
+    The name "quitebeyond" and the project name "Spatial Audio Web
+    Player" are not granted as trademarks under this license. You may
+    not use these names to endorse or promote products derived from
+    this software without prior written permission.
+
+ 3. THIRD-PARTY COMPONENTS
+    This software incorporates the following third-party libraries,
+    each under their own license:
+
+    - Three.js (r128) — MIT License
+      Copyright (c) 2010-2024 three.js authors
+      https://github.com/mrdoob/three.js/blob/dev/LICENSE
+
+    - Resonance Audio — Apache License 2.0
+      Copyright (c) Google Inc.
+      https://github.com/resonance-audio/resonance-audio-web-sdk/blob/master/LICENSE
+
+    - h5wasm (0.7.3) — SEE LICENSE IN REPOSITORY
+      Copyright (c) NIST
+      https://github.com/usnistgov/h5wasm/blob/main/LICENSE
+
+    - Space Mono / Syne — SIL Open Font License 1.1
+      https://fonts.google.com/attribution
+
+    These components are NOT covered by this project's GPL-3.0 license.
+    They retain their original licenses as listed above.
+
+ 4. SOFA FILES / HRTF DATA
+    SOFA files (.sofa) loaded by this software are user-provided data
+    and are not part of this software distribution. Users are responsible
+    for ensuring they have the right to use any HRTF datasets they load.
+
+ ─────────────────────────────────────────────────────────────────────
+
+ For the full text of the GNU General Public License v3, see:
+ https://www.gnu.org/licenses/gpl-3.0.txt
