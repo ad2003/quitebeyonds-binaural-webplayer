@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="de">
 <head>
@@ -906,19 +907,19 @@
     <span id="backendDot" style="display:none"></span>
     <span id="backendStatus" style="display:none"></span>
     <button class="btn" onclick="resetScene()">Reset</button>
-    <button class="btn" onclick="resetAllSpeakers()" title="Alle Speaker zurücksetzen">↺ Speakers</button>
+    <button class="btn" onclick="resetAllSpeakers()" title="Reset all speakers">↺ Speakers</button>
     <!-- Mode Switcher -->
     <div style="display:flex;gap:0;border:1px solid var(--border);border-radius:4px;overflow:hidden;flex-shrink:0;">
       <button id="modeStudioBtn"
         onclick="enterStudioMode()"
-        title="Studio Mode — klassische 7-Kanal-Anordnung"
+        title="Studio Mode — classic 7-channel layout"
         style="font-family:'Space Mono',monospace;font-size:0.62rem;padding:5px 10px;
         border:none;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;
         background:var(--accent);color:#000;border-right:1px solid var(--border);
         transition:all .15s;white-space:nowrap;">🎛 Studio</button>
       <button id="modeSoundscapeBtn"
         onclick="enterSoundscapeMode()"
-        title="Soundscape Mode — freie Platzierung bis zu 32 Sound Sources"
+        title="Soundscape Mode — freely place up to 32 sound sources"
         style="font-family:'Space Mono',monospace;font-size:0.62rem;padding:5px 10px;
         border:none;cursor:pointer;letter-spacing:.04em;text-transform:uppercase;
         background:transparent;color:var(--text-dim);
@@ -941,19 +942,19 @@
       <span style="cursor:pointer;color:var(--text-dim);font-size:1.2rem;" onclick="closeMyNoiseImport()">✕</span>
     </div>
     <p style="font-size:0.62rem;color:var(--text-dim);margin-bottom:12px;line-height:1.6;">
-      myNoise-Seiten-URL einfügen oder direkt den Soundset-Namen eingeben.<br>
-      Beispiel: <span style="color:var(--accent);">https://mynoise.net/.../primevalEuropeanForest...</span><br>
-      Die App lädt automatisch 8 Soundfiles und mappt sie auf die Speaker.
+      myNoise page URL or soundset name.<br>
+      Example: <span style="color:var(--accent);">https://mynoise.net/.../primevalEuropeanForest...</span><br>
+      The app automatically loads 8 sound files and maps them to speakers.
     </p>
     <div style="display:flex;gap:8px;margin-bottom:12px;">
-      <input id="myNoiseUrlInput" type="text" placeholder="URL oder Soundset-Name (z.B. FOREST)"
+      <input id="myNoiseUrlInput" type="text" placeholder="URL or soundset name (e.g. FOREST)"
         style="flex:1;background:#0a1020;border:1px solid var(--border);border-radius:5px;
         color:var(--text);font-family:'Space Mono',monospace;font-size:0.65rem;padding:8px 10px;"
         onkeydown="if(event.key==='Enter') loadMyNoise()">
       <button onclick="loadMyNoise()" 
         style="background:#10b981;border:none;border-radius:5px;color:#000;
         font-family:'Space Mono',monospace;font-size:0.65rem;font-weight:700;
-        padding:8px 14px;cursor:pointer;">Laden ▶</button>
+        padding:8px 14px;cursor:pointer;">Load ▶</button>
     </div>
     <div id="myNoiseStatus" style="font-size:0.62rem;color:var(--text-dim);min-height:20px;
       line-height:1.6;"></div>
@@ -966,7 +967,7 @@
     </div>
     <div style="margin-top:14px;border-top:1px solid var(--border);padding-top:12px;">
       <div style="font-size:0.58rem;color:var(--text-dim);margin-bottom:8px;line-height:1.6;">
-        ⬇ Script ausführen (umgeht CORS &amp; 403), dann Ordner laden:
+        ⬇ Run this script (bypasses CORS &amp; 403), then load the folder:
       </div>
       <div style="display:flex;gap:6px;margin-bottom:8px;">
         <button onclick="(function(){const n=document.getElementById('myNoiseUrlInput').value.trim();const s=_myNoiseExtractSet(n)||'ULTRASONIC';myNoiseDownloadScript(s,'sh');})()"
@@ -984,12 +985,12 @@
         style="width:100%;background:rgba(0,229,255,0.08);border:1px solid var(--accent);
         border-radius:4px;color:var(--accent);font-family:'Space Mono',monospace;
         font-size:0.65rem;font-weight:700;padding:8px;cursor:pointer;">
-        📂 Download-Ordner laden
+        📂 Load Download Folder
       </button>
       <input type="file" id="myNoiseFolderInput" webkitdirectory multiple accept="audio/*"
         style="display:none" onchange="loadMyNoiseFromFolder(this)">
       <div style="font-size:0.52rem;color:rgba(255,255,255,0.2);margin-top:8px;">
-        Bekannte Sets: FOREST · RAIN · OCEAN · THUNDER · WIND · FIRE · RIVER · CAFE · NIGHT · ULTRASONIC
+        Known sets: FOREST · RAIN · OCEAN · THUNDER · WIND · FIRE · RIVER · CAFE · NIGHT · ULTRASONIC
       </div>
     </div>
   </div>
@@ -1031,7 +1032,7 @@
             color:var(--accent);min-width:36px;">3.0m</span>
         </div>
         <div style="font-family:'Space Mono',monospace;font-size:0.52rem;color:var(--text-dim);
-          line-height:1.5;">Alle Speaker gleichmäßig zum<br>Dummy-Head skalieren</div>
+          line-height:1.5;">Scale all speakers evenly<br>toward the dummy head</div>
       </div>
     </div>
 
@@ -1070,16 +1071,16 @@
       <div class="section-header" style="display:flex;align-items:center;justify-content:space-between;gap:4px;">
         <span style="flex:1;" id="spkSectionLabel">Speakers <span class="section-badge" id="spkCountBadge">2</span></span>
         <!-- Fix 2: Play All button above speaker list -->
-        <button id="playAllBtn" onclick="audioState.boxPlayChannel=null;if(audioState.channelBuffers.size>0)playAllChannelFiles(audioState.masterStartOffset||0);else log('Keine Dateien geladen','warn')"
+        <button id="playAllBtn" onclick="audioState.boxPlayChannel=null;if(audioState.channelBuffers.size>0)playAllChannelFiles(audioState.masterStartOffset||0);else log('No files loaded','warn')"
           style="font-family:'Space Mono',monospace;font-size:0.52rem;padding:2px 7px;
           background:transparent;border:1px solid var(--success);border-radius:3px;
           color:var(--success);cursor:pointer;transition:all .15s;white-space:nowrap;"
-          title="Alle geladenen Dateien synchron starten">▶ ALL</button>
+          title="Start all loaded files in sync">▶ ALL</button>
         <button id="loopAllBtn" onclick="toggleLoopAll()"
           style="font-family:'Space Mono',monospace;font-size:0.52rem;padding:2px 7px;
           background:transparent;border:1px solid var(--border);border-radius:3px;
           color:var(--text-dim);cursor:pointer;transition:all .15s;"
-          title="Alle Kanäle loopen an/aus">⟳ ALL</button>
+          title="Toggle loop on/off for all channels">⟳ ALL</button>
       </div>
       <div class="speaker-list" id="speakerList"></div>
 
@@ -1098,21 +1099,21 @@
             <select id="resonanceMaterial" onchange="updateResonanceRoom()"
               style="flex:1;background:var(--bg-deep);border:1px solid var(--border);border-radius:3px;
               color:var(--text);font-family:'Space Mono',monospace;font-size:0.58rem;padding:2px 4px;">
-              <option value="acoustic-ceiling-tiles">Akustik-Decke</option>
-              <option value="brick-bare">Ziegel</option>
-              <option value="concrete-block-coarse">Beton</option>
-              <option value="curtain-heavy">Schwere Vorhänge</option>
-              <option value="fiber-glass-insulation">Glaswolle</option>
-              <option value="hardwood-panel">Hartholz</option>
-              <option value="marble" selected>Marmor (max Hall)</option>
-              <option value="parquet-on-concrete">Parkett</option>
-              <option value="plaster-rough">Putz</option>
-              <option value="plywood-panel">Sperrholz</option>
-              <option value="transparent">Kein Hall</option>
+              <option value="acoustic-ceiling-tiles">Acoustic Ceiling Tiles</option>
+              <option value="brick-bare">Bare Brick</option>
+              <option value="concrete-block-coarse">Concrete Block</option>
+              <option value="curtain-heavy">Heavy Curtains</option>
+              <option value="fiber-glass-insulation">Fiberglass Insulation</option>
+              <option value="hardwood-panel">Hardwood Panel</option>
+              <option value="marble" selected>Marble (max reverb)</option>
+              <option value="parquet-on-concrete">Parquet on Concrete</option>
+              <option value="plaster-rough">Rough Plaster</option>
+              <option value="plywood-panel">Plywood Panel</option>
+              <option value="transparent">No Reverb</option>
             </select>
           </div>
           <div style="display:flex;gap:4px;align-items:center;">
-            <span style="font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--text-dim);width:50px;">Stärke</span>
+            <span style="font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--text-dim);width:50px;">Amount</span>
             <input type="range" id="resonanceGain" min="0" max="100" step="1" value="40"
               oninput="updateResonanceGain(this.value)"
               style="flex:1;height:3px;">
@@ -1127,7 +1128,7 @@
           style="flex:1;background:transparent;border:1px solid var(--border);
           border-radius:3px;color:var(--text-dim);font-family:'Space Mono',monospace;
           font-size:0.58rem;padding:3px 5px;cursor:pointer;transition:all .15s;"
-          title="HRTF: Browser-Binauralisierung. OFF = VBAP Multichannel für VB-Cable/7.1">
+          title="HRTF: Browser binaural rendering. OFF = VBAP multichannel output for VB-Cable / 7.1">
           HRTF: ON
         </button>
         <button id="monoToggleBtn" onclick="toggleMono()"
@@ -1142,8 +1143,8 @@
       <div style="padding:4px 10px 6px;border-top:1px solid var(--border);margin-top:2px;">
         <div style="display:flex;align-items:center;gap:5px;margin-bottom:4px;">
           <div id="ku100StatusDot" style="width:7px;height:7px;border-radius:50%;background:#444;flex-shrink:0;transition:background .3s;"></div>
-          <span style="font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--text-dim);flex:1;" id="ku100StatusLabel">SOFA HRTF: nicht geladen</span>
-          <button id="ku100ClearBtn" onclick="clearKU100()" style="display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;font-size:0.7rem;padding:0 2px;" title="KU100 entladen">✕</button>
+          <span style="font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--text-dim);flex:1;" id="ku100StatusLabel">SOFA HRTF: not loaded</span>
+          <button id="ku100ClearBtn" onclick="clearKU100()" style="display:none;background:transparent;border:none;color:var(--text-dim);cursor:pointer;font-size:0.7rem;padding:0 2px;" title="Unload HRTF">✕</button>
         </div>
         <div style="display:flex;gap:4px;align-items:center;">
           <button onclick="document.getElementById('ku100SofaInput').click()"
@@ -1151,8 +1152,8 @@
             style="flex:1;background:transparent;border:1px solid var(--accent3);
             border-radius:3px;color:var(--accent3);font-family:'Space Mono',monospace;
             font-size:0.56rem;padding:4px 6px;cursor:pointer;transition:all .15s;"
-            title="Beliebige SOFA/HRTF-Datei laden (alle Samplerates, drag & drop ins Fenster)">
-            🎧 SOFA laden
+            title="Load any SOFA/HRTF file (all sample rates, drag & drop supported)">
+            🎧 Load SOFA
           </button>
           <button id="ku100ActiveBtn" onclick="toggleKU100Active()"
             style="display:none;background:transparent;border:1px solid var(--border);
@@ -1195,15 +1196,15 @@
         <button onclick="document.getElementById('customSoundInput').click()"
           style="background:transparent;border:1px solid var(--border);border-radius:3px;
           color:var(--text-dim);font-family:'Space Mono',monospace;font-size:0.6rem;
-          padding:3px 7px;cursor:pointer;white-space:nowrap;" title="MP3/WAV laden">📂</button>
+          padding:3px 7px;cursor:pointer;white-space:nowrap;" title="Load MP3/WAV">📂</button>
         <button onclick="playAllChannelFiles()"
           style="background:transparent;border:1px solid var(--success);border-radius:3px;
           color:var(--success);font-family:'Space Mono',monospace;font-size:0.6rem;
-          padding:3px 7px;cursor:pointer;white-space:nowrap;" title="Alle individuellen Dateien synchron starten">▶▶</button>
+          padding:3px 7px;cursor:pointer;white-space:nowrap;" title="Start all individual files in sync">▶▶</button>
         <button onclick="document.getElementById('folderLoadInput').click()"
           style="background:transparent;border:1px solid var(--border);border-radius:3px;
           color:var(--text-dim);font-family:'Space Mono',monospace;font-size:0.6rem;
-          padding:3px 7px;cursor:pointer;white-space:nowrap;" title="Mehrere Dateien laden und auf Speaker mappen">📂+</button>
+          padding:3px 7px;cursor:pointer;white-space:nowrap;" title="Load multiple files and map to speakers">📂+</button>
         <input type="file" id="customSoundInput" accept="audio/*" style="display:none"
                onchange="loadCustomSound(this)">
         <input type="file" id="folderLoadInput" accept="audio/*" multiple style="display:none"
@@ -1319,7 +1320,7 @@
       <div class="overlay-badge" id="brirBadge" style="display:none;border-color:var(--success);">
         🎧 BRIR: <span id="brirName" style="color:var(--success);">—</span>
         <span style="color:var(--text-dim);cursor:pointer;margin-left:6px;"
-              onclick="deactivateBRIR()" title="BRIR-Modus deaktivieren">✕</span>
+              onclick="deactivateBRIR()" title="Deactivate BRIR mode">✕</span>
       </div>
     </div>
 
@@ -1332,7 +1333,7 @@
         border-bottom:1px solid var(--border);"
         onmousedown="_selDragStart(event)">
         <!-- Move indicator at top-left -->
-        <span title="Verschieben" style="font-size:0.75rem;color:var(--text-dim);
+        <span title="Drag to move" style="font-size:0.75rem;color:var(--text-dim);
           opacity:0.55;flex-shrink:0;cursor:grab;line-height:1;">⠿</span>
         <!-- Context: channel name for speaker, "DUMMY HEAD" for listener -->
         <span id="selModalTitle" style="font-family:'Space Mono',monospace;
@@ -1348,19 +1349,19 @@
           style="display:none;background:transparent;border:1px solid var(--accent3);
           border-radius:3px;color:var(--accent3);font-family:'Space Mono',monospace;
           font-size:0.44rem;padding:1px 5px;cursor:pointer;flex-shrink:0;"
-          title="Neues SOFA / HRTF laden">🎧 SOFA</button>
+          title="Load new SOFA / HRTF">🎧 SOFA</button>
       </div>
       <!-- Row 1: Title -->
       <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
         <div class="sel-title" id="selTitle"
-          title="Doppelklick zum Umbenennen (Soundscape Mode)"
+          title="Double-click to rename (Soundscape Mode)"
           style="cursor:default;"
           ondblclick="_selTitleInlineEdit()">Speaker L</div>
         <button
           style="background:rgba(239,68,68,0.12);border:1px solid #ef4444;border-radius:3px;
           color:#ef4444;font-family:'Space Mono',monospace;font-size:0.55rem;
           padding:1px 6px;cursor:pointer;white-space:nowrap;flex-shrink:0;"
-          onclick="fullResetSelectedChannel()" title="Channel komplett zurücksetzen">✕ Full</button>
+          onclick="fullResetSelectedChannel()" title="Full reset this channel">✕ Full</button>
       </div>
       <!-- Row 2: Action buttons -->
       <div style="display:flex;gap:3px;margin-bottom:6px;">
@@ -1378,18 +1379,18 @@
           style="background:transparent;border:1px solid var(--border);border-radius:3px;
           color:var(--text-dim);font-family:'Space Mono',monospace;font-size:0.55rem;
           padding:2px 6px;cursor:pointer;flex:2;"
-          onclick="resetSelectedObject()" title="Position zurücksetzen">↺ Pos</button>
+          onclick="resetSelectedObject()" title="Reset position">↺ Pos</button>
         <button
           style="background:transparent;border:1px solid var(--border);border-radius:3px;
           color:var(--text-dim);font-family:'Space Mono',monospace;font-size:0.7rem;
           padding:2px 6px;cursor:pointer;flex:1;"
-          onclick="refreshSelectedAngles()" title="Winkel neu berechnen">⟳</button>
+          onclick="refreshSelectedAngles()" title="Recalculate angles">⟳</button>
         <button id="selMirrorBtn"
           style="background:transparent;border:1px solid var(--border);border-radius:3px;
           color:var(--text-dim);font-family:'Space Mono',monospace;font-size:0.7rem;
           padding:2px 6px;cursor:pointer;flex:1;"
           onclick="toggleMirrorChannel(selectedObject?.userData?.channel)"
-          title="Spiegel-Modus — bewegt den Gegen-Speaker symmetrisch">⇄</button>
+          title="Mirror mode — moves the opposite speaker symmetrically">⇄</button>
       </div>
       <div class="sel-inputs" id="selInputs">
         <div class="sel-input-row">
@@ -1422,7 +1423,7 @@
           border-radius:3px;color:var(--text-dim);font-family:'Space Mono',monospace;
           font-size:0.7rem;padding:5px 8px;cursor:pointer;flex-shrink:0;"
           onclick="triggerChannelFileInput()"
-          title="Audio-Datei laden">📁</button>
+          title="Load audio file">📁</button>
         <input type="file" id="selFileInput" accept="audio/*" style="display:none"
           onchange="loadChannelFileFromPopup(this)">
       </div>
@@ -1434,22 +1435,22 @@
             onclick="_selSetExtract('stereo')"
             style="flex:1;background:rgba(0,229,255,0.12);border:1px solid var(--accent);
             border-radius:3px;color:var(--accent);font-family:'Space Mono',monospace;
-            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Stereo (beide Kanäle)">St</button>
+            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Stereo (both channels)">St</button>
           <button id="selExtL"
             onclick="_selSetExtract('L')"
             style="flex:1;background:transparent;border:1px solid var(--border);
             border-radius:3px;color:var(--text-dim);font-family:'Space Mono',monospace;
-            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Nur linker Kanal">L</button>
+            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Left channel only">L</button>
           <button id="selExtR"
             onclick="_selSetExtract('R')"
             style="flex:1;background:transparent;border:1px solid var(--border);
             border-radius:3px;color:var(--text-dim);font-family:'Space Mono',monospace;
-            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Nur rechter Kanal">R</button>
+            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Right channel only">R</button>
           <button id="selExtMo"
             onclick="_selSetExtract('mono')"
             style="flex:1;background:transparent;border:1px solid var(--border);
             border-radius:3px;color:var(--text-dim);font-family:'Space Mono',monospace;
-            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Mono (L+R gemischt)">Mo</button>
+            font-size:0.58rem;padding:3px 0;cursor:pointer;" title="Mono (L+R mixed)">Mo</button>
         </div>
       </div>
       <!-- Audio filename — shown below extract row for speakers -->
@@ -1469,13 +1470,13 @@
         background:rgba(124,58,237,0.06);border:1px solid rgba(124,58,237,0.18);
         border-radius:4px;">
         <div style="font-family:'Space Mono',monospace;font-size:0.44rem;
-          color:var(--text-dim);margin-bottom:4px;letter-spacing:.06em;">DATEI UMLEITEN VON</div>
+          color:var(--text-dim);margin-bottom:4px;letter-spacing:.06em;">REASSIGN FILE FROM</div>
         <div style="display:flex;gap:4px;align-items:center;">
           <select id="selReassignSrc"
             style="flex:1;background:var(--bg-deep);border:1px solid var(--border);
             border-radius:3px;color:var(--text);font-family:'Space Mono',monospace;
             font-size:0.52rem;padding:2px 4px;cursor:pointer;">
-            <option value="">— Kanal wählen —</option>
+            <option value="">— Select channel —</option>
           </select>
           <button onclick="_applyReassign()"
             style="background:transparent;border:1px solid var(--accent3);border-radius:3px;
@@ -1483,7 +1484,7 @@
             padding:3px 7px;cursor:pointer;flex-shrink:0;white-space:nowrap;transition:all .15s;"
             onmouseover="this.style.background='rgba(124,58,237,0.12)'"
             onmouseout="this.style.background='transparent'"
-            title="Ausgewählte Datei auf diese Box umlegen (Musik läuft weiter)">↗ Apply</button>
+            title="Assign selected file to this speaker (playback continues uninterrupted)">↗ Apply</button>
         </div>
       </div>
     </div>
@@ -1500,14 +1501,14 @@
         border:1px solid var(--border);">
         <span style="color:#e8453c;">X</span> /
         <span style="color:#6ab04c;">Y</span> /
-        <span style="color:#4a9fe8;">Z</span> = Achse sperren
+        <span style="color:#4a9fe8;">Z</span> = lock axis
       </div>
       <button id="waveformToggleBtn" onclick="toggleWaveform()" class="view-btn"
-        title="Noten-Animation — zeigt Audioaktivität der Speaker"
+        title="Note animation — shows live audio activity per speaker"
         style="font-size:1rem;position:relative;">
         🎵
       </button>
-      <button class="view-btn" id="egoViewBtn" title="Ego-Perspektive (Dummy Head) — nochmal klicken zum Verlassen" onclick="toggleEgoView()" style="border-color:var(--accent2);color:var(--accent2);">👁</button>
+      <button class="view-btn" id="egoViewBtn" title="Listener POV (Dummy Head) — click again to exit" onclick="toggleEgoView()" style="border-color:var(--accent2);color:var(--accent2);">👁</button>
     </div>
 
     <div id="previewIndicator" style="display:none;"></div><!-- preview state tracked via tab glow -->
@@ -1521,8 +1522,8 @@
       border:1px solid var(--accent);border-radius:8px;padding:8px 14px;z-index:300;
       font-family:'Space Mono',monospace;font-size:0.6rem;color:var(--text);
       align-items:center;gap:10px;box-shadow:0 4px 20px rgba(0,0,0,0.5);">
-      <span style="color:var(--accent);">↕ Multi-Höhe</span>
-      <span id="multiSelCount" style="color:var(--text-dim);">0 Boxen</span>
+      <span style="color:var(--accent);">↕ Multi-Height</span>
+      <span id="multiSelCount" style="color:var(--text-dim);">0 boxes</span>
       <button onclick="multiHeightAdjust(0.1)"
         style="background:rgba(0,229,255,0.1);border:1px solid var(--accent);border-radius:4px;
         color:var(--accent);padding:3px 10px;cursor:pointer;font-family:'Space Mono',monospace;font-size:0.7rem;">▲</button>
@@ -1533,7 +1534,7 @@
       <button onclick="document.getElementById('multiHeightModal').style.display='none'"
         style="background:transparent;border:none;color:var(--text-dim);cursor:pointer;font-size:0.9rem;">✕</button>
     </div>
-    <div class="drag-hint" id="normalHint">Orbit: LMB · Pan: RMB · Zoom: Scroll · <b style="color:var(--accent)">Ctrl+Klick</b>: Multi-Audio · <b style="color:var(--accent2)">Space</b>: Play/Stop</div>
+    <div class="drag-hint" id="normalHint">Orbit: LMB · Pan: RMB · Zoom: Scroll · <b style="color:var(--accent)">Ctrl+Click</b>: Multi-Audio · <b style="color:var(--accent2)">Space</b>: Play/Stop</div>
 
     <!-- FP Mode Overlay -->
     <div id="fpOverlay">
@@ -1546,21 +1547,21 @@
           padding:2px 8px;cursor:pointer;">✕ Exit (F)</button>
       </div>
       <div style="display:flex;gap:8px;align-items:center;">
-        <span style="color:var(--text-dim);white-space:nowrap;">Höhe</span>
+        <span style="color:var(--text-dim);white-space:nowrap;">Height</span>
         <input type="range" id="fpHeightSlider" min="-1.0" max="4.0" step="0.05" value="1.6"
           oninput="fpSetHeight(this.value)"
           style="flex:1;height:3px;accent-color:var(--accent);cursor:pointer;">
         <span id="fpHeightVal" style="color:var(--accent);min-width:48px;text-align:right;font-size:0.56rem;">+1.6m</span>
-        <button onclick="fpResetPosition()" title="Position zurücksetzen"
+        <button onclick="fpResetPosition()" title="Reset position"
           style="background:transparent;border:1px solid var(--border);border-radius:4px;
           color:var(--text-dim);font-family:'Space Mono',monospace;font-size:0.56rem;
           padding:2px 7px;cursor:pointer;white-space:nowrap;">↺</button>
       </div>
       <div style="display:flex;gap:12px;color:var(--text-dim);font-size:0.54rem;line-height:1.8;">
-        <span><b style="color:var(--text);">WASD</b> bewegen</span>
-        <span><b style="color:var(--text);">Maus</b> drehen</span>
-        <span><b style="color:var(--text);">Q/E</b> hoch/runter</span>
-        <span><b style="color:var(--text);">ESC</b> Maus frei</span>
+        <span><b style="color:var(--text);">WASD</b> move</span>
+        <span><b style="color:var(--text);">Mouse</b> look</span>
+        <span><b style="color:var(--text);">Q/E</b> up/down</span>
+        <span><b style="color:var(--text);">ESC</b> free cursor</span>
       </div>
       <div id="fpPosDisplay" style="color:var(--text-dim);font-size:0.52rem;opacity:0.7;"></div>
     </div>
@@ -1605,7 +1606,7 @@
         </button>
         <label style="display:flex;align-items:center;gap:4px;cursor:pointer;white-space:nowrap;
           font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--text-dim);"
-          title="Opus (WebM) zusätzlich exportieren — nur Chrome 94+">
+          title="Also export as Opus (WebM) — Chrome 94+ only">
           <input type="checkbox" id="exportOpusCheck"
             style="accent-color:var(--accent3);cursor:pointer;">
           .opus
@@ -1626,10 +1627,10 @@
       <div id="exportReverbRow" style="margin-top:3px;">
         <label style="display:flex;align-items:center;gap:4px;cursor:pointer;
           font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--accent2);"
-          title="Raumhall in den Export einrechnen">
+          title="Include room reverb in the export">
           <input type="checkbox" id="exportReverbCheck" checked
             style="accent-color:var(--accent2);cursor:pointer;">
-          🏛 Hall einbeziehen
+          🏛 Include Reverb
         </label>
       </div>
     </div>
@@ -1640,20 +1641,20 @@
     <div class="sidebar-panel" id="panel-ash">
       <div class="sidebar-panel-header" style="color:var(--accent3);">⚙ ASH / Advanced</div>
       <div style="padding:12px 14px;border-bottom:1px solid var(--border);">
-        <div class="section-header" style="margin-bottom:8px;">SOFA Visualisierung</div>
+        <div class="section-header" style="margin-bottom:8px;">SOFA Visualization</div>
         <div class="sofa-drop" onclick="document.getElementById('sofaInput').click()">
           <span class="drop-icon">📂</span>
-          BRIR/HRTF .sofa oder _positions.json
+          BRIR/HRTF .sofa or _positions.json
         </div>
         <input type="file" id="sofaInput" accept=".sofa,.json" onchange="loadSOFA(this)">
         <div class="sofa-positions-info" id="sofaPosInfo"></div>
         <div style="font-family:'Space Mono',monospace;font-size:0.55rem;color:var(--text-dim);margin-top:4px;line-height:1.6;">
-          <span style="color:#10b981">●</span> Boden &nbsp;
-          <span style="color:#00e5ff">●</span> Höhe &nbsp;
+          <span style="color:#10b981">●</span> Floor &nbsp;
+          <span style="color:#00e5ff">●</span> Height &nbsp;
           <span style="color:#ff6b35">●</span> Sub
         </div>
         <div style="margin-top:8px;padding-top:8px;border-top:1px solid var(--border);">
-          <input id="ashSpaceName" type="text" placeholder="Space-Name (z.B. Wohnzimmer_7.1)"
+          <input id="ashSpaceName" type="text" placeholder="Space name (e.g. LivingRoom_7.1)"
             style="width:100%;background:var(--bg-deep);border:1px solid var(--border);
             border-radius:3px;color:var(--text);font-family:'Space Mono',monospace;
             font-size:0.62rem;padding:5px 8px;box-sizing:border-box;margin-bottom:6px;">
@@ -1663,7 +1664,7 @@
             style="width:100%;background:var(--accent3);border:none;border-radius:4px;
             color:#fff;font-family:'Space Mono',monospace;font-size:0.64rem;font-weight:700;
             padding:7px;cursor:pointer;letter-spacing:0.05em;">
-            ▶ IN ASH EXPORTIEREN
+            ▶ EXPORT TO ASH
           </button>
         </div>
       </div>
@@ -1675,14 +1676,14 @@
       <div class="section-header">ASH · Acoustic Space</div>
       <div style="font-family:'Space Mono',monospace;font-size:0.54rem;color:var(--text-dim);
         margin-bottom:8px;line-height:1.6;padding:0 2px;border-bottom:1px solid var(--border);padding-bottom:6px;">
-        1. Environment wählen → Raum + ITU-Positionen<br>
-        2. Speaker anpassen<br>
-        3. Unten: <strong style="color:var(--text)">→ IN ASH ÜBERNEHMEN</strong><br>
-        4. In ASH: <strong style="color:var(--accent)">Apply Parameters</strong> klicken
+        1. Choose an environment → sets room + ITU speaker positions<br>
+        2. Adjust speaker placement<br>
+        3. Click: <strong style="color:var(--text)">→ SEND TO ASH</strong> below<br>
+        4. In ASH: click <strong style="color:var(--accent)">Apply Parameters</strong>
       </div>
       <div class="param-row" style="flex-direction:column;align-items:stretch;gap:4px">
         <span class="param-label" style="margin-bottom:2px">Environment</span>
-        <!-- Custom dropdown — zeigt alle 22 Räume ohne Scrollen -->
+        <!-- Custom dropdown — shows all 22 rooms without scrolling -->
         <div id="envDropdownWrap" style="position:relative">
           <div id="envDropdownBtn" onclick="toggleEnvDropdown()"
                style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;
@@ -1691,8 +1692,8 @@
             <span id="envDropdownLabel">Listening Room A · RT60≈221ms</span>
             <span style="opacity:.5;margin-left:6px">▾</span>
           </div>
-          <!-- Immer sichtbares Suchfeld -->
-          <input id="envQuickSearch" type="text" placeholder="Suche Environment… (z.B. theatre, dettmold)"
+          <!-- Always-visible search field -->
+          <input id="envQuickSearch" type="text" placeholder="Search environment… (e.g. theatre, dettmold)"
             style="width:100%;margin-top:4px;background:var(--bg2);border:1px solid var(--border);
                    border-radius:3px;color:var(--text);font-family:'Space Mono',monospace;
                    font-size:0.65rem;padding:5px 8px;box-sizing:border-box;outline:none;
@@ -1850,7 +1851,7 @@
       <div style="padding:14px 12px;">
         <div style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--text-dim);
           margin-bottom:12px;line-height:1.6;">
-          Soundscape Import — Lade einen Ordner mit Audio-Dateien<br>und mappe sie automatisch auf Speaker.
+          Soundscape Import — Load a folder of audio files<br>and automatically map them to speakers.
         </div>
         <button onclick="openMyNoiseImport()"
           style="width:100%;background:rgba(16,185,129,0.08);border:1px solid var(--success);
@@ -1861,7 +1862,7 @@
         <div style="height:1px;background:var(--border);margin:12px 0;"></div>
         <div style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--text-dim);
           margin-bottom:8px;line-height:1.6;">
-          Sleep Mode — Dummy legt sich flach, schaut nach oben. Speaker kommen dann von vorne statt oben.
+          Sleep Mode — Dummy head lies flat, looking up. Speakers come from the front instead of above.
         </div>
         <button id="sleepModeBtn" onclick="toggleSleepMode()"
           style="width:100%;background:transparent;border:1px solid var(--border);
@@ -1873,8 +1874,8 @@
         <div style="height:1px;background:var(--border);margin:12px 0;"></div>
         <div style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--text-dim);
           margin-bottom:8px;line-height:1.6;">
-          SOFA Preview — Browser HRTF während Drag/Bewegung als Live-Vorschau.<br>
-          <span style="color:var(--text-dim);opacity:0.7;">OFF = SOFA läuft immer durch (empfohlen)</span>
+          SOFA Preview — Uses browser HRTF as a live preview while dragging / moving.<br>
+          <span style="color:var(--text-dim);opacity:0.7;">OFF = SOFA always active (recommended)</span>
         </div>
         <button id="previewModeBtn" onclick="togglePreviewMode()"
           style="width:100%;background:transparent;border:1px solid var(--border);
@@ -1892,8 +1893,8 @@
             text-transform:uppercase;">🎲 Random Mode</div>
           <div style="font-family:'Space Mono',monospace;font-size:0.58rem;color:var(--text-dim);
             margin-bottom:10px;line-height:1.6;">
-            Zufällige 3D-Verteilung aller Speaker innerhalb des Raums.
-            Audio läuft unterbrechungsfrei weiter.
+            Randomly distribute all speakers in 3D space.
+            Audio continues playing uninterrupted.
           </div>
           <div style="margin-bottom:10px;">
             <div style="display:flex;justify-content:space-between;
@@ -1907,10 +1908,10 @@
           <!-- Mirror-Aware Toggle -->
           <label style="display:flex;align-items:center;gap:6px;cursor:pointer;
             font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--text-dim);
-            margin-bottom:8px;" title="L/R-Paare werden gespiegelt platziert (gleiche Elevation & Distanz)">
+            margin-bottom:8px;" title="L/R pairs are placed symmetrically (same elevation & distance)">
             <input type="checkbox" id="stRndMirrorCheck" checked
               style="accent-color:var(--accent);cursor:pointer;">
-            Mirror-Aware (L/R gespiegelt)
+            Mirror-Aware (L/R mirrored)
           </label>
           <button onclick="studioRandomize()"
             style="width:100%;padding:9px;background:rgba(0,229,255,0.08);
@@ -1970,8 +1971,8 @@
         <div>
           <div style="font-family:'Space Mono',monospace;font-size:0.58rem;
             color:var(--text-dim);margin-bottom:8px;line-height:1.5;">
-            Zufällige 3D-Verteilung aller Sources — Azimuth, Elevation und Distanz
-            werden kollisionsfrei berechnet.
+            Randomly distribute all sources in 3D — azimuth, elevation, and distance
+            are computed without collisions.
           </div>
 
           <!-- Spread Slider -->
@@ -1988,10 +1989,10 @@
           <!-- Split-Aware Toggle -->
           <label id="scSplitAwareRow" style="display:none;align-items:center;gap:6px;cursor:pointer;
             font-family:'Space Mono',monospace;font-size:0.56rem;color:var(--text-dim);
-            margin-bottom:8px;" title="Split-Paare (L/R) werden gespiegelt platziert">
+            margin-bottom:8px;" title="Split pairs (L/R) are placed symmetrically">
             <input type="checkbox" id="scSplitAwareCheck" checked
               style="accent-color:var(--accent3);cursor:pointer;">
-            Split-Aware (L/R gespiegelt)
+            Split-Aware (L/R mirrored)
           </label>
 
           <!-- Random Button -->
@@ -2044,7 +2045,7 @@
         <div>
           <div style="font-family:'Space Mono',monospace;font-size:0.55rem;
             color:var(--text-dim);margin-bottom:6px;letter-spacing:.06em;
-            text-transform:uppercase;">Alle Sources</div>
+            text-transform:uppercase;">All Sources</div>
           <div style="display:grid;grid-template-columns:1fr 1fr;gap:5px;">
             <button onclick="soundscapeMuteAll(true)"
               style="padding:7px;background:transparent;border:1px solid var(--border);
@@ -2052,7 +2053,7 @@
               font-size:0.58rem;cursor:pointer;transition:all .15s;"
               onmouseenter="this.style.borderColor='var(--accent2)';this.style.color='var(--accent2)'"
               onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'">
-              🔇 Alle muten
+              🔇 Mute All
             </button>
             <button onclick="soundscapeMuteAll(false)"
               style="padding:7px;background:transparent;border:1px solid var(--border);
@@ -2060,7 +2061,7 @@
               font-size:0.58rem;cursor:pointer;transition:all .15s;"
               onmouseenter="this.style.borderColor='var(--success)';this.style.color='var(--success)'"
               onmouseleave="this.style.borderColor='var(--border)';this.style.color='var(--text-dim)'">
-              🔊 Alle unmuten
+              🔊 Unmute All
             </button>
           </div>
         </div>
@@ -2087,7 +2088,7 @@
 <!-- THREE.JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/resonance-audio/build/resonance-audio.min.js"
-  onerror="console.warn('Resonance Audio nicht geladen — Fallback auf Web Audio HRTF')"></script>
+  onerror="console.warn('Resonance Audio failed to load — falling back to Web Audio HRTF')"></script>
 
 <script>
 // ═══════════════════════════════════════════════════════════
@@ -2227,7 +2228,7 @@ const ashSync = {
   enabled:       false,    // Sync aktiv?
   eventSource:   null,     // SSE EventSource
   lastMtime:     0,        // Letzter bekannter mtime der settings.ini
-  writeDebounce: null,     // Debounce-Timer für Write-Back
+  writeDebounce: null,     // debounce timer for write-back
   ignoreNext:    false,    // Verhindert Echo (write → read → move)
   // ASH channel key → unser Channel
   ashToOur: { fl:'L', fr:'R', c:'C', sl:'LS', sr:'RS', rl:'LB', rr:'RB' },
@@ -2845,7 +2846,7 @@ async function fetchAshSpaces() {
         ...dims
       };
     });
-    log(`Environment-Liste: ${spaces.length} Räume geladen (ASH v3)`, 'info');
+    log(`Environment list: ${spaces.length} rooms loaded (ASH v3)`, 'info');
     buildEnvDropdown();
     // Behalte vorherige Auswahl wenn möglich, sonst Listening Room A oder erster Eintrag
     const def = ASH_SPACES[prevName] ? prevName
@@ -2853,7 +2854,7 @@ async function fetchAshSpaces() {
               : spaces[0]?.name;
     if (def) selectEnv(def, false);
   } catch(e) {
-    log(`Spaces vom Backend nicht geladen (${e.message}) — nutze eingebettete Liste`, 'warn');
+    log(`Spaces not loaded from backend (${e.message}) — using built-in list`, 'warn');
     _loadFallbackSpaces();
     buildEnvDropdown();
     selectEnv('Listening Room A', false);
@@ -3137,8 +3138,8 @@ function onAcousticSpaceChanged() {
 
   // 4. RT60 anzeigen
   const rt60Str = spaceData.rt60 > 0 ? `RT60≈${spaceData.rt60}ms` : 'Anechoic';
-  log(`Environment: ${spaceName} · ${rt60Str} · Raum ${room.w}×${room.d}×${room.h}m`, 'ok');
-  log(`Lautsprecher auf ITU-Positionen (Abstand ~${dist}m) — jetzt anpassen!`, 'info');
+  log(`Environment: ${spaceName} · ${rt60Str} · Room ${room.w}×${room.d}×${room.h}m`, 'ok');
+  log(`Speakers set to ITU positions (distance ~${dist}m) — adjust as needed`, 'info');
 }
 
 
@@ -3362,7 +3363,7 @@ function addSoundscapeSource() {
   const pos = [Math.cos(angle) * r, 1.4, Math.sin(angle) * r];
   buildSoundscapeSource(id, label, pos);
   updateSpeakerList();
-  log(`➕ ${label} hinzugefügt`, 'info');
+  log(`➕ ${label} added`, 'info');
 }
 
 // Entfernt eine Soundscape-Source.
@@ -3391,7 +3392,7 @@ function soundscapeSplitAll() {
   if (currentMode !== 'soundscape') return;
   const splittable = soundscapeSources.filter(s =>
     !s.groupId && audioState.channelRawBuffers.get(s.id)?.numberOfChannels >= 2);
-  if (!splittable.length) { log('Keine splittbaren Stereo-Sources gefunden', 'warn'); return; }
+  if (!splittable.length) { log('No splittable stereo sources found', 'warn'); return; }
 
   const wasPlaying = audioState.playingChannels.size > 0;
   const elapsed = wasPlaying ? playerGetElapsed() : 0;
@@ -3475,7 +3476,7 @@ function enterSoundscapeMode(initialSources) {
 function enterStudioMode(skipWarning) {
   const hasContent = soundscapeSources.some(s => audioState.channelBuffers.has(s.id));
   if (!skipWarning && hasContent && currentMode === 'soundscape') {
-    if (!confirm('Soundscape Mode verlassen? Alle Sound Sources werden entfernt.')) return;
+    if (!confirm('Leave Soundscape Mode? All sound sources will be removed.')) return;
   }
   currentMode = 'studio';
   soundscapeSources = [];
@@ -3700,9 +3701,9 @@ function onMouseMove(e) {
     if (axHint) {
       if (_dragAxisKey) {
         axHint.style.display = 'block';
-        axHint.innerHTML = `<span style="color:${_dragAxisKey==='x'?'#e8453c':_dragAxisKey==='y'?'#6ab04c':'#4a9fe8'};font-weight:700;">${_dragAxisKey.toUpperCase()}-Achse gesperrt</span>`;
+        axHint.innerHTML = `<span style="color:${_dragAxisKey==='x'?'#e8453c':_dragAxisKey==='y'?'#6ab04c':'#4a9fe8'};font-weight:700;">${_dragAxisKey.toUpperCase()} axis locked</span>`;
       } else {
-        axHint.innerHTML = '<span style="color:#e8453c;">X</span>/<span style="color:#6ab04c;">Y</span>/<span style="color:#4a9fe8;">Z</span>=Achse · <span style="color:#f0c040;">⇧</span>=Höhe';
+        axHint.innerHTML = '<span style="color:#e8453c;">X</span>/<span style="color:#6ab04c;">Y</span>/<span style="color:#4a9fe8;">Z</span>=lock axis · <span style="color:#f0c040;">⇧</span>=height';
         axHint.style.display = 'block';
       }
     }
@@ -4095,7 +4096,7 @@ function _selUpdateFileDisplay(ch) {
 function reassignChannelBuffer(fileKey, toCh) {
   if (!fileKey || !toCh) return;
   const entry = audioState.fileRegistry.get(fileKey);
-  if (!entry) { log(`Reassign: Datei "${fileKey}" nicht im Registry`, 'warn'); return; }
+  if (!entry) { log(`Reassign: file "${fileKey}" not in registry`, 'warn'); return; }
 
   // ── 1. Apply target channel's current extract mode to raw buffer ──────────
   const ctx         = getAudioContext();
@@ -4158,7 +4159,7 @@ function _updateReassignDropdown(toCh) {
   // Current file on toCh (to preselect it)
   const currentRaw = audioState.channelRawBuffers.get(toCh);
 
-  sel.innerHTML = '<option value="">— Datei wählen —</option>' +
+  sel.innerHTML = '<option value="">— Select file —</option>' +
     [...registry.entries()].map(([fileName, entry]) => {
       // Which channels currently play this file?
       const chList  = bufToChannels.get(entry.rawBuf) || [];
@@ -4173,7 +4174,7 @@ function _updateReassignDropdown(toCh) {
 function _applyReassign() {
   const toCh    = selectedObject?.userData?.channel;
   const fileKey = document.getElementById('selReassignSrc')?.value;
-  if (!toCh || !fileKey) { log('Reassign: Kein Ziel oder keine Datei gewählt', 'warn'); return; }
+  if (!toCh || !fileKey) { log('Reassign: no target or file selected', 'warn'); return; }
   reassignChannelBuffer(fileKey, toCh);
 }
 
@@ -4227,7 +4228,7 @@ function selectObject(obj) {
     if (selFileBtn2) {
       selFileBtn2.style.borderColor = hasFile ? 'var(--success)' : 'var(--border)';
       selFileBtn2.style.color = hasFile ? 'var(--success)' : 'var(--text-dim)';
-      selFileBtn2.title = hasFile ? `📁 ${fn2} — klick zum ändern` : 'Audio-Datei laden';
+      selFileBtn2.title = hasFile ? `📁 ${fn2} — click to change` : 'Load audio file';
     }
     if (selPlayBtn2) {
       const isPlaying = audioState.playingChannels.has(ch2);
@@ -4244,8 +4245,8 @@ function selectObject(obj) {
   // Reset button label depends on type
   const resetBtn = document.getElementById('selResetBtn');
   if (resetBtn) resetBtn.title = obj.userData.type === 'listener'
-    ? 'Listener auf Standardposition zurücksetzen'
-    : 'Speaker auf ITU-Standardposition zurücksetzen';
+    ? 'Reset listener to default position'
+    : 'Reset speaker to ITU default position';
 
   // Highlight in speaker list
   document.querySelectorAll('.speaker-item').forEach(el => el.classList.remove('active'));
@@ -4262,7 +4263,7 @@ function selectObject(obj) {
     mirrorBtn.style.borderColor = isActive ? 'var(--accent)' : 'var(--border)';
     mirrorBtn.style.color = isActive ? 'var(--accent)' : 'var(--text-dim)';
     mirrorBtn.style.background = isActive ? 'rgba(0,229,255,0.1)' : 'transparent';
-    mirrorBtn.title = hasPair ? `Spiegel mit ${MIRROR_PAIRS[ch]}` : 'Kein Mirror-Paar';
+    mirrorBtn.title = hasPair ? `Mirror with ${MIRROR_PAIRS[ch]}` : 'No mirror pair';
   }
 }
 
@@ -4283,7 +4284,7 @@ function refreshSelectedAngles() {
   // Alle spielenden Kanäle aktualisieren
   audioState.playingChannels.forEach(ch => updatePlayingPannerPosition(ch));
   updateSpeakerList();
-  log('Winkel neu berechnet', 'info');
+  log('Angles recalculated', 'info');
 }
 
 function toggleSelectedAudio() {
@@ -4366,7 +4367,7 @@ function _updateSoundscapeList(list) {
     // Gruppen-Indikator für Split-Paare
     const sibling   = groupId ? soundscapeSources.find(s => s.groupId === groupId && s.id !== id) : null;
     const groupDot  = groupId && groupColor
-      ? `<div title="Gehört zu: ${sibling?.label || '?'}"
+      ? `<div title="Part of: ${sibling?.label || '?'}"
           style="width:6px;height:6px;border-radius:50%;flex-shrink:0;
           background:${groupColor};box-shadow:0 0 4px ${groupColor};
           cursor:default;"></div>`
@@ -4434,12 +4435,12 @@ function _updateSoundscapeList(list) {
             style="font-size:0.5rem;padding:2px 3px;min-width:20px;font-weight:700;
             border-color:${_col};color:${_col};background:${_em!=='stereo'?'rgba(0,0,0,0.3)':'transparent'};
             box-shadow:${_em!=='stereo'?'0 0 5px '+_col:'none'};"
-            title="Kanal: ${_el} — klick zum Wechseln (St→L→R→Mo→St)">${_el}</button>`;
+            title="Channel: ${_el} — click to cycle (St→L→R→Mo→St)">${_el}</button>`;
         })() : ''}
         <button class="spk-play-btn"
           style="font-size:0.55rem;padding:2px 4px;${hasFile?'border-color:var(--success);color:var(--success);':'opacity:0.4;'}"
           onclick="event.stopPropagation();document.getElementById('chfile_${id}').click()"
-          title="${hasFile?(fn||'Datei laden'):'Datei laden'}">📁</button>
+          title="${hasFile?(fn||'Load file'):'Load file'}">📁</button>
         <input type="file" id="chfile_${id}" accept="audio/*" style="display:none"
           onchange="event.stopPropagation();loadChannelFile('${id}',this)">
         <button class="spk-play-btn"
@@ -4461,7 +4462,7 @@ function _updateSoundscapeList(list) {
       background:rgba(6,182,212,0.06);border:1px dashed rgba(6,182,212,0.35);
       border-radius:4px;color:#06b6d4;font-family:'Space Mono',monospace;
       font-size:0.58rem;cursor:pointer;letter-spacing:.04em;transition:all .15s;`;
-    splitAllBtn.textContent = `⇄ Alle splitten (${splittable.length} Stereo)`;
+    splitAllBtn.textContent = `⇄ Split all (${splittable.length} stereo)`;
     splitAllBtn.onmouseenter = () => { splitAllBtn.style.background = 'rgba(6,182,212,0.15)'; splitAllBtn.style.borderColor = '#06b6d4'; };
     splitAllBtn.onmouseleave = () => { splitAllBtn.style.background = 'rgba(6,182,212,0.06)'; splitAllBtn.style.borderColor = 'rgba(6,182,212,0.35)'; };
     splitAllBtn.onclick = soundscapeSplitAll;
@@ -4617,7 +4618,7 @@ function updateSpeakerList() {
           })() : ''}
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:1px;" onclick="event.stopPropagation()" title="Lautstärke: ${vol}%">
+      <div style="display:flex;align-items:center;gap:1px;" onclick="event.stopPropagation()" title="Volume: ${vol}%">
         <button class="spk-play-btn" style="padding:1px 4px;font-size:0.6rem;min-width:14px;"
           onclick="event.stopPropagation();setSpeakerVolume('${ch}',Math.max(0,(audioState.channelVolumes.get('${ch}')??1)-0.1).toFixed(1));updateSpeakerList()">−</button>
         <span style="font-family:'Space Mono',monospace;font-size:0.5rem;color:var(--text-dim);min-width:26px;text-align:center;">${vol}%</span>
@@ -4628,7 +4629,7 @@ function updateSpeakerList() {
         <button class="spk-play-btn"
           style="padding:2px 4px;font-size:0.55rem;font-weight:700;${audioState.soloChannels.has(ch)?'border-color:#f59e0b;color:#f59e0b;background:rgba(245,158,11,0.15);':''}"
           onclick="event.stopPropagation();toggleSoloChannel('${ch}')"
-          title="Solo ${ch} — alle anderen muten">S</button>
+          title="Solo ${ch} — mute all others">S</button>
         <button class="spk-play-btn" 
           style="padding:2px 4px;font-size:0.55rem;${audioState.mutedChannels?.has(ch)?'border-color:var(--accent2);color:var(--accent2);opacity:1;':''}"
           onclick="event.stopPropagation();toggleMuteChannel('${ch}')"
@@ -4657,11 +4658,11 @@ function updateSpeakerList() {
           style="font-size:0.5rem;padding:2px 3px;min-width:20px;font-weight:700;
           border-color:${_col};color:${_col};background:${_em!=='stereo'?'rgba(0,0,0,0.3)':'transparent'};
           box-shadow:${_em!=='stereo'?'0 0 5px '+_col:'none'};"
-          title="Kanal: ${_el} — klick zum Wechseln (St→L→R→St)">${_el}</button>`;
+          title="Channel: ${_el} — click to cycle (St→L→R→St)">${_el}</button>`;
       })() : ''}
       <button class="spk-play-btn" style="font-size:0.55rem;padding:2px 4px;${audioState.channelBuffers.has(ch)?'border-color:var(--success);color:var(--success);':'opacity:0.4;'}"
         onclick="event.stopPropagation();document.getElementById('chfile_${ch}').click()"
-        title="${audioState.myNoiseMode?'Dateien für a/b Pool laden (myNoise Mode)':audioState.channelBuffers.has(ch)?'📁 '+audioState.channelFileNames.get(ch):'Datei laden'}">📁</button>
+        title="${audioState.myNoiseMode?'Load files for a/b pool (myNoise Mode)':audioState.channelBuffers.has(ch)?'📁 '+audioState.channelFileNames.get(ch):'Load file'}">📁</button>
       <input type="file" id="chfile_${ch}" accept="audio/*" style="display:none"
         ${audioState.myNoiseMode ? 'multiple' : ''}
         onchange="event.stopPropagation();audioState.myNoiseMode?loadMyNoiseFilesForChannel('${ch}',this):loadChannelFile('${ch}',this)">
@@ -4873,7 +4874,7 @@ function fullResetSelectedChannel() {
   playerUpdateFileCount();
   updateSpeakerList();
   updateLoopAllBtn();
-  log(`✕ ${ch} komplett zurückgesetzt`, 'info');
+  log(`✕ ${ch} fully reset`, 'info');
 }
 
 function handleSpeakerClick(e, ch) {
@@ -4990,7 +4991,7 @@ function loadSOFA(input) {
         if (pos && Array.isArray(pos)) {
           visualizeSOFAPositions(pos);
         } else {
-          log('JSON: kein positions[] Array gefunden', 'warn');
+          log('JSON: no positions[] array found', 'warn');
         }
       } catch(err) { log('JSON parse error: ' + err.message, 'err'); }
     };
@@ -4999,11 +5000,11 @@ function loadSOFA(input) {
     const dot = document.getElementById('backendDot');
     const isOnline = dot && dot.classList.contains('connected');
     if (isOnline) {
-      log('SOFA: lade über Backend...', 'info');
+      log('SOFA: loading via backend…', 'info');
       uploadSOFAToBackend(file);
     } else {
-      log('SOFA binary: Backend nicht verbunden.', 'warn');
-      log('Option A: Backend starten → dann nochmal laden.', 'info');
+      log('SOFA binary: backend not connected.', 'warn');
+      log('Option A: start backend → then load again.', 'info');
       log('Option B: python sofa_to_json.py ' + file.name, 'info');
     }
   }
@@ -5048,8 +5049,8 @@ async function uploadSOFAToBackend(file) {
     setTimeout(() => activateBRIR(brirPath, file.name), 200);
 
   } catch(e) {
-    log('SOFA Fehler: ' + e.message, 'err');
-    log('Backend läuft? python ash_backend.py', 'warn');
+    log('SOFA error: ' + e.message, 'err');
+    log('Is backend running? python ash_backend.py', 'warn');
   }
 }
 
@@ -5120,17 +5121,17 @@ function visualizeSOFAPositions(positions) {
   if (info) {
     info.style.display = 'block';
     info.innerHTML =
-      `✓ ${positions.length} SOFA-Positionen (skaliert ×${scale.toFixed(2)}) · ` +
+      `✓ ${positions.length} SOFA positions (scaled ×${scale.toFixed(2)}) · ` +
       `<span style="color:var(--accent);cursor:pointer;text-decoration:underline;" ` +
-      `onclick="snapSpeakersToSOFA()">→ SOFA-Positionen als Speaker anzeigen</span>`;
+      `onclick="snapSpeakersToSOFA()">→ Apply SOFA positions as speakers</span>`;
   }
-  log(`SOFA: ${positions.length} Messpositionen · Grün=Boden Cyan=Höhe Orange=Sub`, 'ok');
-  log(`Klick auf "→ SOFA-Positionen als Speaker anzeigen" um die Messpositionen zu übernehmen`, 'info');
+  log(`SOFA: ${positions.length} measurement positions · Green=Floor Cyan=Height Orange=Sub`, 'ok');
+  log(`Click "→ Apply SOFA positions as speakers" to use these positions`, 'info');
 }
 
 function snapSpeakersToSOFA() {
   if (!sofaPositions || !sofaPositions.length) {
-    log('Keine SOFA-Positionen geladen', 'warn'); return;
+    log('No SOFA positions loaded', 'warn'); return;
   }
 
   const lp    = listenerObject ? listenerObject.position.clone() : new THREE.Vector3(0,0,0);
@@ -5507,7 +5508,7 @@ function resetSpeakerPos(ch) {
   updateSpeakerLine(ch);
   updateSpeakerList();
   _ku100UpdateChannelIfActive(ch);
-  log(`↺ ${ch} zurückgesetzt`, 'info');
+  log(`↺ ${ch} reset`, 'info');
   _pushHistory(ch);
 }
 
@@ -5558,7 +5559,7 @@ function resetListenerPos() {
     updateSpeakerLine(ch);
   });
   updateSpeakerList();
-  log('↺ Listener komplett zurückgesetzt', 'info');
+  log('↺ Listener fully reset', 'info');
   setTimeout(_syncWebAudioListener, 50); // after ctx is ready
   // Batch KU100 restart — single session
   if (!ku100State.active || !ku100State.entries.length || !audioState.hrtfEnabled) {
@@ -5595,7 +5596,7 @@ function resetAllSpeakers() {
     _pushHistory(ch);
   });
   updateSpeakerList();
-  log(`↺ Alle ${channels.length} Lautsprecher zurückgesetzt`, 'ok');
+  log(`↺ All ${channels.length} speakers reset`, 'ok');
 
   // Batch audio restart — single session increment, all channels at same offset
   if (!ku100State.active || !ku100State.entries.length || !audioState.hrtfEnabled) {
@@ -5625,18 +5626,18 @@ async function exportToASH() {
 
   if (!spaceName) {
     nameInput?.focus();
-    log('Bitte zuerst einen Space-Namen eingeben', 'warn');
+    log('Please enter a space name first', 'warn');
     return;
   }
 
   if (!backendOnline) {
-    log('Backend nicht verbunden. Starte: python ash_backend.py', 'warn');
+    log('Backend not connected. Run: python ash_backend.py', 'warn');
     return;
   }
 
   const channels = getCurrentChannels();
   if (!channels.length) {
-    log('Kein Speaker-Layout aktiv', 'warn');
+    log('No speaker layout active', 'warn');
     return;
   }
 
@@ -5647,9 +5648,9 @@ async function exportToASH() {
 
   // Modus bestimmen
   const hasSofa = brirState.active && brirState.sofaPath;
-  const modeStr = hasSofa ? `SOFA-Basis: ${brirState.sofaName}` : `Dirac (ASH-Raumklang: ${envName})`;
+  const modeStr = hasSofa ? `SOFA-based: ${brirState.sofaName}` : `Dirac (ASH room acoustics: ${envName})`;
 
-  // Lautsprecher-Positionen berechnen (ASH-Azimuth: 0-360° CW)
+  // Calculate speaker positions (ASH azimuth: 0–360° CW)
   const lp = listenerObject
     ? listenerObject.position.clone().add(new THREE.Vector3(0, DUMMY_EAR_Y, 0))
     : new THREE.Vector3(0, 1.0, 0);
@@ -5659,7 +5660,7 @@ async function exportToASH() {
     if (!obj) return null;
     const d    = obj.position.clone().sub(lp);
     const dist = d.length();
-    // ITU azimuth: -180..180, positiv=rechts — Backend macht SOFA-Konvertierung
+    // ITU azimuth: -180..180, positive=right — backend handles SOFA conversion
     const az = Math.atan2(d.x, -d.z) * 180 / Math.PI;
     const el = dist > 0 ? Math.asin(Math.max(-1, Math.min(1, d.y / dist))) * 180 / Math.PI : 0;
     return {
@@ -5670,13 +5671,13 @@ async function exportToASH() {
     };
   }).filter(Boolean);
 
-  log(`Exportiere "${spaceName}" · ${speakers.length} Speaker · ${modeStr}`, 'info');
+  log(`Exporting "${spaceName}" · ${speakers.length} speakers · ${modeStr}`, 'info');
   if (statusDiv) {
     statusDiv.style.display = 'block';
     statusDiv.style.color   = 'var(--accent)';
     statusDiv.textContent   = hasSofa
-      ? '⏳ Extrahiere IRs aus SOFA... (10-30 Sek.)'
-      : '⏳ Exportiere Positionen als Dirac-Space...';
+      ? '⏳ Extracting IRs from SOFA… (10–30 sec)'
+      : '⏳ Exporting positions as Dirac space…';
   }
 
   try {
@@ -5697,7 +5698,7 @@ async function exportToASH() {
       const err = await r.text();
       // Permission error → klare Anleitung
       if (err.includes('Permission') || err.includes('permission')) {
-        throw new Error('Admin-Rechte fehlen. Backend als Administrator starten: Rechtsklick → "Als Administrator ausführen"');
+        throw new Error('Admin rights required. Start backend as administrator: right-click → "Run as administrator"');
       }
       throw new Error(err.slice(0, 300));
     }
@@ -5705,17 +5706,17 @@ async function exportToASH() {
     const d = await r.json();
     log(`✓ Space "${d.space_name}" exportiert (${d.n_speakers} Speaker · ${d.mode || ''})`, 'ok');
     log(`In ASH: Tab "Headphone Correction & Spatial Audio"`, 'ok');
-    log(`→ Acoustic Space → Collection: "User Imports" → "${d.space_name}" wählen`, 'ok');
+    log(`→ Acoustic Space → Collection: "User Imports" → select "${d.space_name}"`, 'ok');
     log(`→ Listener: B&K 4128 → Apply / Generate`, 'info');
     if (statusDiv) {
       statusDiv.style.color = 'var(--success)';
       statusDiv.innerHTML   =
-        `✓ <b>${d.space_name}</b> in ASH verfügbar!<br>` +
-        `${d.mode === 'Dirac' ? '📐 Dirac: ASH nutzt eigenen Raumklang' : '🎧 SOFA-Basis: echte IRs'}<br>` +
+        `✓ <b>${d.space_name}</b> available in ASH!<br>` +
+        `${d.mode === 'Dirac' ? '📐 Dirac: ASH uses its own room acoustics' : '🎧 SOFA-based: real IRs'}<br>` +
         `In ASH → User Imports → <b>${d.space_name}</b>`;
     }
   } catch(e) {
-    log(`Export Fehler: ${e.message}`, 'err');
+    log(`Export error: ${e.message}`, 'err');
     if (statusDiv) {
       statusDiv.style.color = 'var(--accent2)';
       statusDiv.textContent = `✗ ${e.message}`;
@@ -6412,8 +6413,8 @@ function _resetAllChannelAudio() {
   audioState.masterStartOffset = 0;
   audioState.masterStartCtxTime = null;
   audioState.boxPlayChannel = null;  // clear exclusive box mode on full reset
-  audioState.soloChannels.clear();   // verhindert Solo-State-Überbleibsel beim Moduswechsel
-  audioState.mutedChannels.clear();  // verhindert Mute-State-Überbleibsel beim Moduswechsel
+  audioState.soloChannels.clear();   // prevent solo state leaking across mode switches
+  audioState.mutedChannels.clear();  // prevent mute state leaking across mode switches
   // 3. UI synchronisieren
   playerUpdateFileCount();
   updateSpeakerList();
@@ -6439,8 +6440,8 @@ function _mfmSetMode(mode) {
   }
   if (desc) {
     desc.textContent = mode === 'studio'
-      ? 'Klassische 7-Kanal-Anordnung — Dateien den Lautsprechern zuordnen.'
-      : 'Freie Platzierung — jede Datei wird eine frei positionierbare Sound Source.';
+      ? 'Classic 7-channel layout — assign files to speakers.'
+      : 'Free placement — each file becomes a freely positionable sound source.';
   }
   // Liste neu aufbauen mit passendem Layout
   const modal = document.getElementById('multiFileModal');
@@ -6690,7 +6691,7 @@ function _buildMfmList(files) {
           : probeChCount === 1
           ? `<span style="font-family:'Space Mono',monospace;font-size:0.42rem;padding:1px 3px;
               border:1px solid #4a5a6a;border-radius:2px;color:#4a5a6a;flex-shrink:0;"
-              title="Mono — kein Split nötig">1ch</span>`
+              title="Mono — no split needed">1ch</span>`
           : '';
         const row = document.createElement('div');
         row.style.cssText = 'display:flex;gap:6px;align-items:center;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);';
@@ -6806,7 +6807,7 @@ function _buildMfmList(files) {
       onchange="_mfmSelectChanged(this,'${ch}')"
       style="flex:1;background:#0a1020;border:1px solid #2a3a4a;
       border-radius:3px;color:#e0e8f0;font-family:'Space Mono',monospace;font-size:0.56rem;padding:2px 4px;">
-      <option value="__skip__" ${isLFE||suggestedFiNum<0?'selected':''}>— keine Datei —</option>
+      <option value="__skip__" ${isLFE||suggestedFiNum<0?'selected':''}>— no file —</option>
       ${files.map((f,fi) =>
         `<option value="${fi}" ${fi===suggestedFiNum&&!isLFE?'selected':''}>${f.name}</option>`
       ).join('')}
@@ -6851,7 +6852,7 @@ function loadMultipleFiles(input) {
   _resetAllChannelAudio();
   files.sort((a,b) => a.name.localeCompare(b.name));
 
-  log(`📂 ${files.length} Datei${files.length!==1?'en':''} geladen`, 'info');
+  log(`📂 ${files.length} file${files.length!==1?'s':''} loaded`, 'info');
 
   const modal = document.getElementById('multiFileModal');
   const list  = document.getElementById('multiFileList');
@@ -6956,7 +6957,7 @@ function confirmMultiFileLoad() {
       }
     });
 
-    log(`🌌 Soundscape: ${newSources.length} Sources geladen`, 'ok');
+    log(`🌌 Soundscape: ${newSources.length} sources loaded`, 'ok');
 
   } else {
     // ── Studio Branch (bisheriges Verhalten) ─────────────────────────────
@@ -7037,7 +7038,7 @@ function loadChannelFileFromPopup(input) {
   if (btn) {
     btn.style.borderColor = 'var(--success)';
     btn.style.color = 'var(--success)';
-    btn.title = 'Datei geladen — klick zum ändern';
+    btn.title = 'File loaded — click to change';
   }
 }
 
@@ -7178,7 +7179,7 @@ function toggleHRTF() {
   const wasPlaying = [...audioState.playingChannels];
   stopAllAudio();
   wasPlaying.forEach(ch => playSpeakerTest(ch));
-  log(`HRTF: ${audioState.hrtfEnabled ? 'ON (Browser Binauralisierung)' : 'OFF (nur Pegel-Panning — für ASH-Workflow)'}`, 'info');
+  log(`HRTF: ${audioState.hrtfEnabled ? 'ON (browser binaural rendering)' : 'OFF (level panning only — for ASH workflow)'}`, 'info');
 }
 
 function toggleMono() {
@@ -7260,7 +7261,7 @@ function toggleResonanceAudio() {
       );
     }
 
-    log('🎧 Resonance Audio aktiviert — Raumhall sanft eingeblendet', 'ok');
+    log('🎧 Resonance Audio enabled — room reverb fading in', 'ok');
 
   } else {
     // ── Deaktivieren ────────────────────────────────────────────────────
@@ -7299,7 +7300,7 @@ function toggleResonanceAudio() {
       destroyResonanceScene();
     }, 150); // Bug #4: was 100ms — fade is 80ms, need ≥100ms; 150ms gives clean margin
 
-    log('Resonance Audio deaktiviert — Web Audio HRTF', 'info');
+    log('Resonance Audio disabled — Web Audio HRTF', 'info');
   }
 
   // Reverb-Export-Zeile zeigen/verstecken
@@ -7632,7 +7633,7 @@ function playerShowFileList(e) {
       ${fn.length>20?fn.slice(0,20)+'…':fn}
     </div>`;
   });
-  list.innerHTML = html || '<span style="opacity:.5">Keine Dateien</span>';
+  list.innerHTML = html || '<span style="opacity:.5">No files</span>';
   list.style.display = 'block';
 }
 
@@ -7793,7 +7794,7 @@ async function loadMyNoiseFilesForChannel(ch, input) {
     _myNoiseVariantIdx.set(ch, 0);
   }
   audioState.masterDuration = Math.max(audioState.masterDuration, ...bufs.map(b => b.duration));
-  log(`📁 ${ch}: ${files.length} Dateien für a/b Pool geladen`, 'ok');
+  log(`📁 ${ch}: ${files.length} files loaded for a/b pool`, 'ok');
   updateSpeakerList();
   try { if (input && 'value' in input) input.value = ''; } catch(_) {}
 }
@@ -7916,7 +7917,7 @@ function _applyExtract(ctx, buf, mode) {
 // PURE ROUTING CHANGE — no source restart, no stop, no playSession touch.
 // Updates live gain nodes (gainL/gainR) in the already-running audio graph.
 function setChannelExtract(ch, mode) {
-  if (!audioState.channelRawBuffers.has(ch)) { log(`${ch}: keine Datei geladen`, 'warn'); return; }
+  if (!audioState.channelRawBuffers.has(ch)) { log(`${ch}: no file loaded`, 'warn'); return; }
   audioState.channelExtract.set(ch, mode);
 
   // ── 1. Update live routing: adjust gainL/gainR of running nodes ────────
@@ -7937,7 +7938,7 @@ function setChannelExtract(ch, mode) {
   updateSpeakerList();
   if (selectedObject?.userData?.channel === ch) selectObject(selectedObject);
   const _modeLabel = { stereo:'Stereo', L:'Links', R:'Rechts', mono:'Mono' };
-  log(`${ch}: Kanal → ${_modeLabel[mode] || mode}`, 'info');
+  log(`${ch}: channel → ${_modeLabel[mode] || mode}`, 'info');
 }
 
 function loadChannelFile(ch, input) {
@@ -8007,7 +8008,7 @@ function playAllChannelFiles(startOffset, _boxOnly) {
   audioState.boxPlayChannel = (_boxOnly !== undefined) ? _boxOnly : null;
 
   const channels = [...audioState.channelBuffers.keys()];
-  if (!channels.length) { log('Keine individuellen Dateien geladen', 'warn'); return; }
+  if (!channels.length) { log('No individual files loaded', 'warn'); return; }
   stopAllAudio();
 
   const ctx = getAudioContext();
@@ -8518,7 +8519,7 @@ done
 
 echo ""
 echo "Done! $COUNT files saved to: $OUTDIR/"
-echo "→  Klicke 📂+ in der App → alle MP3s in diesem Ordner auswählen (Strg+A)"
+echo "→  Click 📂+ in the app → select all MP3s in this folder (Ctrl+A)"
 open "$OUTDIR" 2>/dev/null || xdg-open "$OUTDIR" 2>/dev/null || start "$OUTDIR" 2>/dev/null
 `;
 
@@ -8571,7 +8572,7 @@ for i in range(21):  # 0 to 20
 
 print()
 print(f"✓  {count} files downloaded to: {os.path.abspath(OUTDIR)}/")
-print("→  Klicke 📂+ in der App → alle MP3s in diesem Ordner auswählen (Strg+A)")
+print("→  Click 📂+ in the app → select all MP3s in this folder (Ctrl+A)")
 print()
 
 import subprocess
@@ -8591,7 +8592,7 @@ for cmd in [["open", OUTDIR], ["xdg-open", OUTDIR], ["explorer", OUTDIR]]:
 
   const statusEl = document.getElementById('myNoiseStatus');
   if (statusEl) {
-    statusEl.innerHTML += `<br><span style="color:#10b981;font-size:0.58rem;">✓ ${filename} — prüft 0b–20b + 0a–20a</span>`;
+    statusEl.innerHTML += `<br><span style="color:#10b981;font-size:0.58rem;">✓ ${filename} — checking 0b–20b + 0a–20a</span>`;
   }
 }
 
@@ -8864,10 +8865,10 @@ async function loadMyNoise() {
   const barEl = document.getElementById('myNoiseProgressBar');
   const textEl = document.getElementById('myNoiseProgressText');
   
-  if (!input) { statusEl.textContent = '⚠ Bitte URL oder Soundset-Name eingeben.'; return; }
+  if (!input) { statusEl.textContent = '⚠ Please enter a URL or soundset name.'; return; }
   
   const setName = _myNoiseExtractSet(input);
-  if (!setName) { statusEl.textContent = '⚠ Konnte Soundset-Name nicht erkennen.'; return; }
+  if (!setName) { statusEl.textContent = '⚠ Could not identify soundset name.'; return; }
   
   statusEl.innerHTML = `🔍 Lade Soundset <span style="color:var(--accent)">${setName}</span> von mynoise.world…`;
   progressEl.style.display = 'block';
@@ -8897,8 +8898,8 @@ async function loadMyNoise() {
     const isCors = corsErr.message.includes('CORS') || corsErr.name === 'TypeError';
     progressEl.style.display = 'none';
     statusEl.innerHTML = `
-      <span style="color:#ef4444;">✗ CORS-Fehler</span> — mynoise.world erlaubt keinen direkten Browser-Zugriff.<br>
-      <span style="color:var(--text-dim);font-size:0.58rem;">Script herunterladen → ausführen → im 📂+ Dialog alle MP3s auswählen (Strg+A).</span>
+      <span style="color:#ef4444;">✗ CORS error</span> — mynoise.world blocks direct browser access.<br>
+      <span style="color:var(--text-dim);font-size:0.58rem;">Download the script → run it → open all MP3s via the 📂+ dialog (Ctrl+A).</span>
       <div style="display:flex;gap:6px;margin-top:8px;">
         <button onclick="myNoiseDownloadScript('${setName}','sh')"
           style="flex:1;background:rgba(16,185,129,0.1);border:1px solid #10b981;border-radius:4px;
@@ -8948,7 +8949,7 @@ async function loadMyNoise() {
   barEl.style.width = '100%';
   
   if (loaded === 0) {
-    statusEl.innerHTML = `✗ Keine Dateien geladen. Soundset "${setName}" existiert möglicherweise nicht.`;
+    statusEl.innerHTML = `✗ No files loaded. Soundset "${setName}" may not exist.`;
     return;
   }
 
@@ -9037,11 +9038,11 @@ async function loadMyNoise() {
 
   const altInfo = altLoaded > 0 ? ` + ${altLoaded}a + ${extraBuffers.length} Extras` : '';
   statusEl.innerHTML = `✅ ${loaded} Files${altInfo}.<br>
-    <span style="color:var(--success);">"${setName}" bereit — ▶▶ drücken.</span><br>
-    <span style="color:var(--text-dim);font-size:0.58rem;">🔀 Shuffle aktiv: a/b wechseln nahtlos beim Loop.</span>`;
+    <span style="color:var(--success);">"${setName}" ready — press ▶▶ to play.</span><br>
+    <span style="color:var(--text-dim);font-size:0.58rem;">🔀 Shuffle active: a/b variants alternate seamlessly on loop.</span>`;
   updateSpeakerList();
   playerUpdateFileCount();
-  log(`🌲 myNoise "${setName}": ${loaded}b+${altLoaded}a geladen`, 'ok');
+  log(`🌲 myNoise "${setName}": ${loaded}b+${altLoaded}a loaded`, 'ok');
   // Auto-start playback + close modal
   // Small delay to ensure all state is set before playback
   setTimeout(() => {
@@ -9076,7 +9077,7 @@ async function loadMyNoise() {
       📂 Drop SOFA oder Audio
     </div>
     <div style="font-size:0.58rem;color:#64748b;font-family:'Space Mono',monospace;" id="_dropSub">
-      .sofa → HRTF laden · .wav/.mp3/… → Speaker-Dateien
+      .sofa → load HRTF · .wav/.mp3/… → speaker files
     </div>`;
   document.body.appendChild(overlay);
 
@@ -9085,8 +9086,8 @@ async function loadMyNoise() {
 
   function _showOverlay(isSofa) {
     overlay.style.display = 'flex';
-    document.getElementById('_dropLabel').textContent = isSofa ? '🎧 SOFA droppen → HRTF laden' : '🔊 Audio droppen → Speaker laden';
-    document.getElementById('_dropSub').textContent   = isSofa ? 'beliebige Samplerate, beliebiger SOFA-Typ' : '.wav · .mp3 · .flac · .ogg · .m4a';
+    document.getElementById('_dropLabel').textContent = isSofa ? '🎧 Drop SOFA → load HRTF' : '🔊 Drop audio → load speakers';
+    document.getElementById('_dropSub').textContent   = isSofa ? 'any sample rate, any SOFA type' : '.wav · .mp3 · .flac · .ogg · .m4a';
     _dropActive = true;
     clearTimeout(_dropHideTimer);
   }
@@ -9142,7 +9143,7 @@ async function loadMyNoise() {
       e.preventDefault();
       e.stopPropagation();
       loadKU100SOFAFromFile(sofaFiles[0]);
-      if (sofaFiles.length > 1) log(`SOFA: nur die erste Datei geladen (${sofaFiles[0].name})`, 'warn');
+      if (sofaFiles.length > 1) log(`SOFA: only the first file loaded (${sofaFiles[0].name})`, 'warn');
     }
     if (audioFiles.length) {
       e.preventDefault();
@@ -9200,7 +9201,7 @@ async function loadMyNoise() {
     modal.style.background = 'rgba(0,0,0,0.7)';
 
     const st = document.getElementById('myNoiseStatus');
-    if (st) st.innerHTML = '📂 Lese Ordner…';
+    if (st) st.innerHTML = '📂 Reading folder…';
 
     // CRITICAL: extract entries and files SYNCHRONOUSLY before any async
     // dataTransfer is cleared after the event returns
@@ -9252,7 +9253,7 @@ async function loadMyNoise() {
 
       const mp3s = allFiles.filter(f => /\.(mp3|wav|ogg|flac|m4a)$/i.test(f.name));
       if (!mp3s.length) {
-        if (st) st.innerHTML = `<span style="color:#ef4444;">Keine Audio-Dateien gefunden (${allFiles.length} Dateien gelesen).</span>`;
+        if (st) st.innerHTML = `<span style="color:#ef4444;">No audio files found (${allFiles.length} files scanned).</span>`;
         return;
       }
 
@@ -9272,7 +9273,7 @@ function loadMyNoiseFromFolder(input) {
   input.value = ''; // reset so same folder can be selected again
   if (!files.length) {
     const st = document.getElementById('myNoiseStatus');
-    if (st) st.innerHTML = '<span style="color:#ef4444;">Keine Audio-Dateien im Ordner gefunden.</span>';
+    if (st) st.innerHTML = '<span style="color:#ef4444;">No audio files found in folder.</span>';
     return;
   }
   _loadMyNoiseFromFiles(files);
@@ -9286,7 +9287,7 @@ async function _loadMyNoiseFromFiles(files) {
   const barEl      = document.getElementById('myNoiseProgressBar');
   const textEl     = document.getElementById('myNoiseProgressText');
 
-  if (statusEl)   statusEl.innerHTML = '📂 Lese Dateien…';
+  if (statusEl)   statusEl.innerHTML = '📂 Reading files…';
   if (progressEl) progressEl.style.display = 'block';
   if (barEl)      barEl.style.width = '0%';
 
@@ -9338,13 +9339,13 @@ async function _loadMyNoiseFromFiles(files) {
   }
 
   if (loaded === 0) {
-    if (statusEl)   statusEl.innerHTML = '<span style="color:#ef4444;">✗ Keine b-Dateien erkannt.</span>';
+    if (statusEl)   statusEl.innerHTML = '<span style="color:#ef4444;">✗ No b-files recognised.</span>';
     if (progressEl) progressEl.style.display = 'none';
     return;
   }
 
   // ── Load a-files + extra b-files for alt pool ────────────────────────────
-  if (statusEl) statusEl.innerHTML = `✓ ${loaded} b-Dateien — lade a-Varianten…`;
+  if (statusEl) statusEl.innerHTML = `✓ ${loaded} b-files — loading a-variants…`;
   const extraBuffers = [];
 
   for (const [key, ch] of Object.entries(chMap)) {
@@ -9397,13 +9398,13 @@ async function _loadMyNoiseFromFiles(files) {
   if (barEl) barEl.style.width = '100%';
   const altCount = Array.from(audioState.myNoiseAlts.values()).filter(v=>v.length>1).length;
   if (statusEl) statusEl.innerHTML = `✅ ${loaded} Files + ${altCount} Alt-Pools.<br>
-    <span style="color:var(--success);">"${setName}" bereit — startet in Kürze…</span><br>
-    <span style="color:var(--text-dim);font-size:0.58rem;">🔀 Shuffle: a/b wechseln nahtlos.</span>`;
+    <span style="color:var(--success);">"${setName}" ready — starting shortly…</span><br>
+    <span style="color:var(--text-dim);font-size:0.58rem;">🔀 Shuffle: a/b variants alternate seamlessly.</span>`;
 
   updateSpeakerList();
   playerUpdateFileCount();
   updateLoopAllBtn();
-  log(`🌲 myNoise "${setName}": ${loaded}b + ${Array.from(audioState.myNoiseAlts.keys()).length} altPools geladen`, 'ok');
+  log(`🌲 myNoise "${setName}": ${loaded}b + ${Array.from(audioState.myNoiseAlts.keys()).length} altPools loaded`, 'ok');
 
   setTimeout(() => {
     closeMyNoiseImport();
@@ -9545,7 +9546,7 @@ async function playSpeakerWithBRIR(ch) {
   }
 
   if (!irBuffer) {
-    log(`Keine BRIR für ${ch} → Generic HRTF`, 'warn');
+    log(`No BRIR for ${ch} → generic HRTF`, 'warn');
     playSpeakerTest(ch);
     return;
   }
@@ -9612,7 +9613,7 @@ async function fetchBRIR(az, el, ch) {
       sofa_path:   brirState.sofaPath,
       azimuth:     parseFloat(az.toFixed(1)),
       elevation:   parseFloat(el.toFixed(1)),
-      head_yaw:    0,   // Kopf geradeaus — erweiterbar für Head-Tracking
+      head_yaw:    0,   // head straight ahead — extensible for head-tracking
       channel:     ch,
     }),
     signal: AbortSignal.timeout(10000),
@@ -9637,7 +9638,7 @@ function activateBRIR(sofaPath, sofaName) {
   brirState.irCache.clear(); // Cache leeren bei neuer SOFA
   updateBRIRBadge();
   stopAllAudio();
-  log(`🎧 BRIR-Modus aktiv: ${sofaName}`, 'ok');
+  log(`🎧 BRIR mode active: ${sofaName}`, 'ok');
   log('▶ Buttons nutzen jetzt echte Impulsantworten statt generischem HRTF', 'info');
 }
 
@@ -9648,7 +9649,7 @@ function deactivateBRIR() {
   brirState.irCache.clear();
   updateBRIRBadge();
   stopAllAudio();
-  log('BRIR-Modus deaktiviert → generisches HRTF', 'info');
+  log('BRIR mode deactivated → generic HRTF', 'info');
 }
 
 function updateBRIRBadge() {
@@ -9746,7 +9747,7 @@ async function connectBackend() {
       fetchAshSpaces();
       // Settings-Pfad loggen
       if (d.settings_file) {
-        const found = d.settings_found ? '✓' : '✗ nicht gefunden';
+        const found = d.settings_found ? '✓' : '✗ not found';
         log(`⇄ settings.ini: ${d.settings_file} [${found}]`, d.settings_found ? 'info' : 'warn');
       }
     } else throw new Error('HTTP ' + r.status);
@@ -9793,12 +9794,12 @@ function toggleAshSync() {
 
 function startAshSync() {
   if (!backendOnline) {
-    log('⇄ Backend nicht verbunden — Sync nicht möglich', 'warn');
+    log('⇄ Backend not connected — sync unavailable', 'warn');
     return;
   }
   ashSync.enabled = true;
   setSyncIndicator('active');
-  log('⇄ ASH Live Sync aktiviert — Winkeländerungen in ASH werden live übernommen', 'ok');
+  log('⇄ ASH Live Sync active — angle changes in ASH applied in real time', 'ok');
 
   // SSE Stream öffnen
   if (ashSync.eventSource) ashSync.eventSource.close();
@@ -9809,7 +9810,7 @@ function startAshSync() {
       const data = JSON.parse(e.data);
       if (data.error) { setSyncIndicator('error'); return; }
       if (!data.found) {
-        log(`⇄ settings.ini nicht gefunden: ${data.path}`, 'warn');
+        log(`⇄ settings.ini not found: ${data.path}`, 'warn');
         setSyncIndicator('error');
         return;
       }
@@ -9838,7 +9839,7 @@ function stopAshSync() {
     ashSync.eventSource = null;
   }
   setSyncIndicator('off');
-  log('⇄ ASH Sync deaktiviert', 'info');
+  log('⇄ ASH Sync deactivated', 'info');
 }
 
 function applyAshAngles(channels) {
@@ -9947,7 +9948,7 @@ function ashSyncWriteBack() {
 
     try {
       setSyncIndicator('writing');
-      ashSync.ignoreNext = true;  // Echo unterdrücken
+      ashSync.ignoreNext = true;  // suppress echo
       await fetch(backendUrl + '/ash-settings', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -9957,7 +9958,7 @@ function ashSyncWriteBack() {
       setTimeout(() => setSyncIndicator('active'), 500);
     } catch(e) {
       ashSync.ignoreNext = false;
-      log(`⇄ Write-back Fehler: ${e.message}`, 'warn');
+      log(`⇄ Write-back error: ${e.message}`, 'warn');
       setSyncIndicator('error');
       setTimeout(() => setSyncIndicator('active'), 2000);
     }
@@ -10000,7 +10001,7 @@ async function processWithASH() {
         const sofaFile = d.files.find(f => f.endsWith('.sofa'));
         if (sofaFile) {
           const sofaPath = d.output_path + '/' + sofaFile;
-          log(`🎧 Lade Output-SOFA für BRIR-Hörtest...`, 'info');
+          log(`🎧 Loading output SOFA for BRIR playback test…`, 'info');
           // Kurze Verzögerung damit der User die Logs lesen kann
           setTimeout(async () => {
             try {
@@ -10014,7 +10015,7 @@ async function processWithASH() {
               if (rPos.ok) {
                 const dPos = await rPos.json();
                 if (dPos.positions?.length) visualizeSOFAPositions(dPos.positions);
-                log(`✓ ${dPos.num_positions} BRIR-Positionen geladen`, 'ok');
+                log(`✓ ${dPos.num_positions} BRIR positions loaded`, 'ok');
               }
             } catch(e) { log(`SOFA auto-load: ${e.message}`, 'warn'); }
             activateBRIR(sofaPath, sofaFile);
@@ -10028,7 +10029,7 @@ async function processWithASH() {
   } catch(e) {
     bar.classList.remove('active');
     fill.style.width = '0%';
-    log('Backend Fehler: ' + e.message, 'err');
+    log('Backend error: ' + e.message, 'err');
     log('Tipp: python ash_backend.py starten', 'warn');
     exportConfig();
   }
@@ -10128,7 +10129,7 @@ function resetScene() {
   // ── 5. Kamera anpassen ──
   animateCameraTo(0, room.h * 1.5, room.d * 1.8);
 
-  log(`↺ Reset: Raum ${room.w}×${room.d}×${room.h}m, alle ${ordered.length} Speaker wiederhergestellt`, 'ok');
+  log(`↺ Reset: room ${room.w}×${room.d}×${room.h}m, all ${ordered.length} speakers restored`, 'ok');
 }
 
 function updateListenerType() {
@@ -10370,7 +10371,7 @@ function togglePreviewMode() {
   }
   log(_previewModeEnabled
     ? '👁 Preview Mode AN — Browser HRTF beim Bewegen'
-    : '👁 Preview Mode AUS — SOFA läuft durch', 'info');
+    : '👁 Preview Mode OFF — SOFA always active', 'info');
 }
 
 function _setPreviewIndicator(active) {
@@ -10399,7 +10400,7 @@ function toggleSleepMode() {
     listenerObject.rotation.x = Math.PI/2; // tilt body back
     listenerObject.position.y = 0;
     if (btn) { btn.style.borderColor = 'var(--accent3)'; btn.style.color = 'var(--accent3)'; btn.style.background = 'rgba(124,58,237,0.1)'; btn.innerHTML = '🛌 Sleep Mode: ON'; }
-    log('😴 Sleep Mode — Dummy liegt auf dem Boden, schaut nach oben', 'info');
+    log('😴 Sleep Mode — dummy head lying flat, looking up', 'info');
     const si = document.getElementById('sleepIndicator'); if (si) si.style.display = 'block';
   } else {
     listenerObject.rotation.x = 0;
@@ -10456,7 +10457,7 @@ function _fpOnMouseActivity() {
 
 function fpSetHeight(val) {
   const h = parseFloat(val);
-  const label = h === 0 ? '0m (Boden)' : (h > 0 ? '+' + h.toFixed(1) + 'm' : h.toFixed(1) + 'm');
+  const label = h === 0 ? '0m (floor)' : (h > 0 ? '+' + h.toFixed(1) + 'm' : h.toFixed(1) + 'm');
   document.getElementById('fpHeightVal').textContent = label;
   fpState.eyeHeight = h;
   if (fpState.active) camera.position.y = h;
@@ -10475,7 +10476,7 @@ function fpResetPosition() {
   const lbl = document.getElementById('fpHeightVal');
   if (slider) slider.value = h;
   if (lbl) lbl.textContent = '+' + h.toFixed(2) + 'm';
-  log('↺ FP Position zurückgesetzt', 'info');
+  log('↺ FP position reset', 'info');
 }
 
 function _fpShowOverlay(visible) {
@@ -10593,7 +10594,7 @@ function toggleFirstPersonMode() {
     _fpRestoreKU100();
     // 3. Reset camera only
     setCameraView('reset');
-    log('👁 FP beendet — Dummy behält Position und Blickrichtung', 'info');
+    log('👁 FP exited — dummy head keeps position and orientation', 'info');
   }
 }
 
@@ -10630,7 +10631,7 @@ document.addEventListener('keydown', e => {
         fpState.audioActive = false; // stop fpUpdate from overriding audio
         if (listenerObject) listenerObject.rotation.y = fpState.yaw + Math.PI;
         _fpRestoreKU100();
-        log('👁 FP Maus frei — Audio zurück auf KU100. F oder 👁 = komplett verlassen.', 'info');
+        log('👁 FP cursor free — audio back on KU100. F or 👁 = exit completely.', 'info');
       } else {
         // Second ESC: exit FP completely (camera resets, dummy stays)
         toggleFirstPersonMode();
@@ -10652,7 +10653,7 @@ document.addEventListener('keydown', e => {
       const lbl = document.getElementById('fpHeightVal');
       if (slider) slider.value = defaultH;
       if (lbl) lbl.textContent = '+' + defaultH.toFixed(2) + 'm';
-      log('↺ Höhe zurückgesetzt auf ' + defaultH + 'm', 'info');
+      log('↺ Height reset to ' + defaultH + 'm', 'info');
     }
     if (e.key === 'x' || e.key === 'X') {
       // X: full dummy reset in FP
@@ -10660,7 +10661,7 @@ document.addEventListener('keydown', e => {
       fpState.yaw = 0; fpState.pitch = 0;
       const qY = new THREE.Quaternion().setFromAxisAngle(new THREE.Vector3(0,1,0), 0);
       camera.quaternion.copy(qY);
-      log('↺ FP Position + Blickrichtung zurückgesetzt', 'info');
+      log('↺ FP position + orientation reset', 'info');
     }
   }
 });
@@ -10821,7 +10822,7 @@ function _ku100UpdateUI() {
   if (!ku100State.loaded) {
     dot.style.background = '#444';
     dot.style.boxShadow  = 'none';
-    label.textContent = 'SOFA HRTF: nicht geladen';
+    label.textContent = 'SOFA HRTF: not loaded';
     actBtn.style.display   = 'none';
     clearBtn.style.display = 'none';
     if (fileInfo) fileInfo.style.display = 'none';
@@ -10838,7 +10839,7 @@ function _ku100UpdateUI() {
   } else {
     dot.style.background = '#666';
     dot.style.boxShadow  = 'none';
-    label.textContent = `SOFA: geladen (${ku100State.entries.length} Punkte) — inaktiv`;
+    label.textContent = `SOFA: loaded (${ku100State.entries.length} points) — inactive`;
     actBtn.style.display = 'inline-block';
     actBtn.textContent   = 'KU100: OFF';
     actBtn.style.borderColor = 'var(--border)';
@@ -10858,7 +10859,7 @@ function _ku100UpdateUI() {
       const ms = (n / sr * 1000).toFixed(1);
       fileDets.innerHTML =
         `${m} Richtungen &nbsp;·&nbsp; ${n} taps &nbsp;·&nbsp; ${(sr/1000).toFixed(1)} kHz` +
-        `<br>${ms} ms IR-Länge &nbsp;·&nbsp; gain ×${ku100State.gainCorrection.toFixed(2)}`;
+        `<br>${ms} ms IR length &nbsp;·&nbsp; gain ×${ku100State.gainCorrection.toFixed(2)}`;
     }
   } else if (fileInfo) {
     fileInfo.style.display = 'none';
@@ -10891,7 +10892,7 @@ function toggleKU100Active() {
   // playAllChannelFiles already calls _syncWebAudioListener at end
   // but if not playing, sync now to preserve orientation
   if (audioState.playingChannels.size === 0) _syncWebAudioListener();
-  log(ku100State.active ? '🎧 KU100 HRTF aktiv' : '🎧 KU100 deaktiviert → Browser HRTF', 'info');
+  log(ku100State.active ? '🎧 KU100 HRTF active' : '🎧 KU100 deactivated → browser HRTF', 'info');
 }
 
 function clearKU100() {
@@ -10906,7 +10907,7 @@ function clearKU100() {
     stopAllAudio();
     if (audioState.channelBuffers.size > 0) playAllChannelFiles(offset, audioState.boxPlayChannel || undefined);
   }
-  log('KU100 entladen', 'info');
+  log('KU100 unloaded', 'info');
 }
 
 // ── SOFA Parser ─────────────────────────────────────────────────────
@@ -10938,7 +10939,7 @@ async function loadKU100SOFAFromFile(file) {
     const h5 = h5wasmModule;
 
     barEl.style.width = '15%';
-    textEl.textContent = 'Lese Datei…';
+    textEl.textContent = 'Reading file…';
     if (!_welcomeSofaDone) _wdzProgress('wdzSofa', 1, 4, 'Reading file…');
     const ab    = await file.arrayBuffer();
     const uint8 = new Uint8Array(ab);
@@ -11085,7 +11086,7 @@ async function loadKU100SOFAFromFile(file) {
     }
 
     barEl.style.width = '100%';
-    textEl.textContent = `✓ ${M} HRTFs geladen (${N} taps @ ${sr}Hz)`;
+    textEl.textContent = `✓ ${M} HRTFs loaded (${N} taps @ ${sr}Hz)`;
     ku100State.loaded = true;
     ku100State.active = true;
 
@@ -11115,7 +11116,7 @@ async function loadKU100SOFAFromFile(file) {
   } catch(err) {
     barEl.style.width = '100%';
     barEl.style.background = 'var(--accent2)';
-    textEl.textContent = '✗ Fehler: ' + err.message;
+    textEl.textContent = '✗ Error: ' + err.message;
     log('SOFA Ladefehler: ' + err.message, 'err');
     console.error('SOFA error:', err);
     setTimeout(() => { progressEl.style.display = 'none'; barEl.style.background = 'var(--accent3)'; }, 4000);
@@ -11186,7 +11187,7 @@ function _startOneChannelKU100(ch, sourceBuf, offset, gainNode) {
 async function exportBinauralMix() {
   const channels = [...audioState.channelBuffers.keys()];
   if (!channels.length) {
-    log('Export: keine Audiodateien geladen', 'warn');
+    log('Export: no audio files loaded', 'warn');
     return;
   }
 
@@ -11197,7 +11198,7 @@ async function exportBinauralMix() {
   try {
     const SR       = 48000;
     const duration = audioState.masterDuration;
-    if (duration <= 0) { log('Export: Dauer = 0 — zuerst Dateien laden und abspielen', 'warn'); return; }
+    if (duration <= 0) { log('Export: duration = 0 — load and play files first', 'warn'); return; }
 
     const offCtx = new OfflineAudioContext(2, Math.ceil(SR * duration), SR);
 
@@ -11297,11 +11298,11 @@ async function exportBinauralMix() {
     if (wantOpus && window.AudioEncoder) {
       await _exportOpusViaWebCodecs(rendered, duration);
     } else if (wantOpus && !window.AudioEncoder) {
-      log('WebCodecs nicht verfügbar — Opus nur in Chrome 94+', 'warn');
+      log('WebCodecs not available — Opus requires Chrome 94+', 'warn');
     }
 
   } catch (e) {
-    log('Export Fehler: ' + e.message, 'err');
+    log('Export error: ' + e.message, 'err');
     console.error(e);
   } finally {
     if (btn) { btn.disabled = false; btn.textContent = '🎧 Export Binaural Mix (WAV)'; }
@@ -11377,7 +11378,7 @@ async function _exportOpusViaWebCodecs(audioBuf, duration) {
       ? 'audio/webm;codecs=opus'
       : MediaRecorder.isTypeSupported('audio/webm') ? 'audio/webm' : null;
 
-    if (!mimeType) { log('MediaRecorder Opus: nicht unterstützt', 'warn'); tmpCtx.close(); return; }
+    if (!mimeType) { log('MediaRecorder Opus: not supported', 'warn'); tmpCtx.close(); return; }
 
     const recorder = new MediaRecorder(dest.stream, { mimeType, audioBitsPerSecond: 192000 });
     const chunks   = [];
@@ -11919,7 +11920,7 @@ function studioRandomize() {
   updateSpeakerList();
   _schedulePostAnimSync();
   const pairInfo = pairCount > 0 ? ` · ${pairCount} Paar${pairCount>1?'e':''} gespiegelt` : '';
-  log(`🎲 ${channels.length} Speaker zufällig verteilt (Spread ${Math.round(spread*100)}%${pairInfo})`, 'ok');
+  log(`🎲 ${channels.length} speakers randomly distributed (spread ${Math.round(spread*100)}%${pairInfo})`, 'ok');
 }
 
 function studioFormation(type) {
@@ -12018,7 +12019,7 @@ function soundscapeRandomize() {
   const spread = (parseInt(document.getElementById('scSpreadSlider')?.value || 60)) / 100;
   const splitAware = document.getElementById('scSplitAwareCheck')?.checked || false;
   const n      = soundscapeSources.length;
-  const placed = []; // [{az, el}] für Kollisionsprüfung
+  const placed = []; // [{az, el}] for collision checking
   const minAngDist = 25 * (1 - spread * 0.6);
 
   // Build group map: groupId → [srcL, srcR] and track already-placed IDs
@@ -12104,7 +12105,7 @@ function soundscapeRandomize() {
   updateSpeakerList();
   _schedulePostAnimSync();
   const pairInfo = pairCount > 0 ? ` · ${pairCount} Paar${pairCount>1?'e':''} gespiegelt` : '';
-  log(`🎲 ${n} Sources zufällig verteilt (Spread ${Math.round(spread*100)}%${pairInfo})`, 'ok');
+  log(`🎲 ${n} sources randomly distributed (spread ${Math.round(spread*100)}%${pairInfo})`, 'ok');
 }
 
 // ── Preset Formations ──────────────────────────────────────────────────────
@@ -12215,7 +12216,7 @@ function soundscapeMuteAll(mute) {
     _applyChannelGain(src.id);
   });
   updateSpeakerList();
-  log(mute ? '🔇 Alle Sources gemutet' : '🔊 Alle Sources ungemutet', 'info');
+  log(mute ? '🔇 All sources muted' : '🔊 All sources unmuted', 'info');
 }
 
 // ═══ END SOUNDSCAPE TOOLS ═════════════════════════════════════════════════════
@@ -12299,7 +12300,7 @@ window.addEventListener('load', () => {
 
     <!-- Mode description -->
     <div id="mfmDesc" style="font-family:'Space Mono',monospace;font-size:0.52rem;color:#64748b;line-height:1.6;">
-      Klassische 7-Kanal-Anordnung — Dateien den Lautsprechern zuordnen.
+      Classic 7-channel layout — assign files to speakers.
     </div>
 
     <!-- File list -->
@@ -12314,7 +12315,7 @@ window.addEventListener('load', () => {
         cursor:pointer;transition:all .15s;letter-spacing:.03em;"
         onmouseenter="this.style.background='rgba(6,182,212,0.14)'"
         onmouseleave="this.style.background='rgba(6,182,212,0.06)'">
-        ⇄ Alle Stereo-Files splitten
+        ⇄ Split all stereo files
       </button>
     </div>
 
@@ -12322,12 +12323,12 @@ window.addEventListener('load', () => {
       <button onclick="cancelMultiFileLoad()"
         style="background:transparent;border:1px solid #2a3a4a;border-radius:6px;
         color:#aaa;font-family:'Space Mono',monospace;font-size:0.62rem;padding:6px 14px;cursor:pointer;">
-        Abbrechen
+        Cancel
       </button>
       <button onclick="confirmMultiFileLoad()"
         style="background:#00e5ff;border:none;border-radius:6px;color:#000;
         font-family:'Space Mono',monospace;font-size:0.62rem;font-weight:700;
-        padding:6px 14px;cursor:pointer;">✓ Laden</button>
+        padding:6px 14px;cursor:pointer;">✓ Load</button>
     </div>
   </div>
 </div>
@@ -12397,9 +12398,9 @@ window.addEventListener('load', () => {
       onclick="toggleLoopAll()"
       style="background:transparent;border:1px solid var(--border);border-radius:6px;
       color:var(--text-dim);cursor:pointer;font-size:0.65rem;padding:3px 8px;transition:all .15s;"
-      title="Loop ALL an/aus">⟳</button>
+      title="Loop ALL on/off">⟳</button>
     <button onclick="playerSyncSnap()" id="playerSyncBtn"
-      title="Alle Dateien auf aktuelle Position synchronisieren"
+      title="Sync all files to current playback position"
       style="background:none;border:1px solid rgba(0,229,255,0.25);border-radius:6px;
       color:var(--accent);cursor:pointer;font-size:0.62rem;padding:3px 8px;">⟳</button>
 
@@ -12422,7 +12423,7 @@ window.addEventListener('load', () => {
 </div>
 
 <!-- ═══════════════════════════════════════════════════════════════════
-     STUDIO MODULES — Milestone 0–2  (inline, kein HTTP-Server nötig)
+     STUDIO MODULES — Milestone 0–2  (inline, no HTTP server required)
      Reihenfolge ist bindend.
 ═══════════════════════════════════════════════════════════════════ -->
 
@@ -12481,7 +12482,7 @@ const EventBus = (() => {
     if (!handlers || handlers.size === 0) return;
     [...handlers].forEach(h => {
       try { h.fn(data); }
-      catch (err) { console.error(`[EventBus] Handler-Fehler für "${event}":`, err); }
+      catch (err) { console.error(`[EventBus] Handler error for "${event}":`, err); }
       if (h.once) handlers.delete(h);
     });
   }
@@ -12627,7 +12628,7 @@ const StateStore = (() => {
   function _notifySubscribers(path, value) {
     (_subscribers.get(path) || new Set()).forEach(fn => {
       try { fn(value); }
-      catch(e) { console.error(`[StateStore] Subscriber-Fehler bei "${path}":`, e); }
+      catch(e) { console.error(`[StateStore] Subscriber error for "${path}":`, e); }
     });
     EventBus.emit(`store:${path}:changed`, value);
   }
@@ -12712,7 +12713,7 @@ const StateStore = (() => {
 
   function restoreSnapshot(snapshot) {
     if (!snapshot || typeof snapshot !== 'object')
-      throw new AppError('SESSION_PARSE_FAILED', 'Ungültiges Snapshot-Format');
+      throw new AppError('SESSION_PARSE_FAILED', 'Invalid snapshot format');
     if (snapshot.version !== SNAPSHOT_VERSION)
       throw new AppError('SESSION_VERSION_MISMATCH',
         `Schema v${SNAPSHOT_VERSION} erwartet, v${snapshot.version} erhalten`,
@@ -12756,7 +12757,7 @@ const StateStore = (() => {
     }
 
     EventBus.emit(Events.SESSION_RESTORED, { snapshot });
-    Logger.log('Session wiederhergestellt', 'ok');
+    Logger.log('Session restored', 'ok');
   }
 
   return Object.freeze({ get, set, update, subscribe,
@@ -12791,7 +12792,7 @@ const SessionManager = (() => {
       Events.UI_DAY_NIGHT_TOGGLED,
       Events.EXTRACT_MODE_CHANGED,
     ].forEach(ev => EventBus.on(ev, _scheduleSave));
-    Logger.info('[SessionManager] initialisiert');
+    Logger.info('[SessionManager] initialised');
   }
 
   function _scheduleSave() {
@@ -12805,7 +12806,7 @@ const SessionManager = (() => {
       localStorage.setItem(STORAGE_KEY, JSON.stringify(snapshot));
       EventBus.emit(Events.SESSION_SAVED, { timestamp: snapshot.timestamp });
     } catch(e) {
-      Logger.warn(`[SessionManager] Speichern fehlgeschlagen: ${e.message}`);
+      Logger.warn(`[SessionManager] Save failed: ${e.message}`);
     }
   }
 
@@ -12820,7 +12821,7 @@ const SessionManager = (() => {
       StateStore.restoreSnapshot(JSON.parse(raw));
       return true;
     } catch(e) {
-      Logger.warn(`[SessionManager] Wiederherstellen fehlgeschlagen: ${e.message}`);
+      Logger.warn(`[SessionManager] Restore failed: ${e.message}`);
       EventBus.emit(Events.SESSION_IMPORT_ERROR,
         { error: new AppError('SESSION_PARSE_FAILED', e.message) });
       return false;
@@ -12837,7 +12838,7 @@ const SessionManager = (() => {
       save();
       return true;
     } catch(e) {
-      Logger.err(`[SessionManager] Import fehlgeschlagen: ${e.message}`);
+      Logger.err(`[SessionManager] Import failed: ${e.message}`);
       EventBus.emit(Events.SESSION_IMPORT_ERROR,
         { error: new AppError('SESSION_PARSE_FAILED', e.message) });
       return false;
@@ -12847,7 +12848,7 @@ const SessionManager = (() => {
   function clear() {
     try { localStorage.removeItem(STORAGE_KEY); } catch(_) {}
     EventBus.emit(Events.SESSION_CLEARED, {});
-    Logger.info('[SessionManager] Session gelöscht');
+    Logger.info('[SessionManager] Session cleared');
   }
 
   return Object.freeze({ init, save, restore, hasSavedSession,
@@ -12871,10 +12872,10 @@ const BackendSync = (() => {
   }
 
   function startSync() {
-    Logger.info('[BackendSync] Stub — startSync() noch nicht implementiert');
+    Logger.info('[BackendSync] Stub — startSync() not yet implemented');
   }
   function stopSync() {
-    Logger.info('[BackendSync] Stub — stopSync() noch nicht implementiert');
+    Logger.info('[BackendSync] Stub — stopSync() not yet implemented');
   }
   function writeSpeakerPositions() { /* no-op */ }
   function destroy() { _syncEnabled = false; }
@@ -12901,7 +12902,7 @@ window.addEventListener('load', () => {
   if (SessionManager.hasSavedSession()) {
     setTimeout(() => {
       const ok = SessionManager.restore();
-      if (ok) Logger.info('[init] Session aus localStorage wiederhergestellt');
+      if (ok) Logger.info('[init] Session restored from localStorage');
     }, 150);
   }
 
