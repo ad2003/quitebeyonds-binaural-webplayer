@@ -108,7 +108,7 @@ Single-file HTML application (~12,900 lines). No build tools, no bundler, no fra
 
 ## Quick Start
 
-1. Download `player_v10.html`
+1. Download `quitebeyonds_webplayer.html`
 2. Open in Chrome/Firefox
 3. Drop audio files on the left zone, a .sofa file on the right zone
 4. Press Space or ▶ to play
