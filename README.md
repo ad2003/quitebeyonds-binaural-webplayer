@@ -1,5 +1,7 @@
 # 🎧 quitebeyond's Spatial Audio Web Player
 
+Live Demo (https://ad2003.github.io/quitebeyonds-binaural-webplayer/)
+
 A browser-based 3D spatial audio workstation for binaural mixing, HRTF rendering, and immersive soundscape design. Single HTML file — no build step, no server required.
 
 ## Features
